@@ -1,21 +1,21 @@
 ## Contributing
 
-First off, thank you for considering contributing to the library dvbern-lib-data!
+First off, thank you for considering contributing to the library date-helper!
 ### 1. Where do I go from here?
 
 If you've noticed a bug or have a question that doesn't belong on the
-[wiki](https://github.com/dvbern/dvbern-lib-data/wiki), then
-[search the issue tracker](https://github.com/dvbern/dvbern-lib-data/issues)
+[wiki](https://github.com/dvbern/date-helper/wiki), then
+[search the issue tracker](https://github.com/dvbern/date-helper/issues)
 to see if someone else in the community has already created a ticket regarding your issue.
-If not, feel free to go ahead and [make one](https://github.com/dvbern/dvbern-lib-data/issues/new)!
+If not, feel free to go ahead and [make one](https://github.com/dvbern/date-helper/issues/new)!
 
 ### 2. Did you find a bug?
 
 * **Ensure the bug was not already reported** by searching on GitHub under 
-[Issues](https://github.com/dvbern/dvbern-lib-data/issues).
+[Issues](https://github.com/dvbern/date-helper/issues).
 
 * If you're unable to find an open issue addressing the problem, 
-[open a new one](https://github.com/dvbern/dvbern-lib-data/issues/new). 
+[open a new one](https://github.com/dvbern/date-helper/issues/new). 
 Be sure to include a **title and clear description**, as much relevant information as possible, 
 and a **code sample** or an **executable test case** demonstrating the expected behavior that is not happening.
 
@@ -24,7 +24,7 @@ and a **code sample** or an **executable test case** demonstrating the expected 
 At this point, you're ready to make your changes! Feel free to ask for help!
 
 If this is something you think you can fix, then
-[fork dvbern-lib-data](https://help.github.com/articles/fork-a-repo)
+[fork date-helper](https://help.github.com/articles/fork-a-repo)
 and create a branch with a descriptive name.
 
 A good branch name would be (where issue #325 is the ticket you're working on):
@@ -58,7 +58,7 @@ At this point, you should switch back to your master branch and make sure it's
 up to date with the master branch:
 
 ```sh
-git remote add upstream git@github.com/dvbern/dvbern-lib-data.git
+git remote add upstream git@github.com/dvbern/date-helper.git
 git checkout master
 git pull upstream master
 ```

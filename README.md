@@ -1,4 +1,4 @@
-# dvbern-lib-date
+# date-helper
 
 This library provides helper classes for date operations and the calculation of holidays.
 
@@ -12,8 +12,8 @@ This library provides helper classes for date operations and the calculation of 
 
 ```xml
 <dependency>
-	<groupId>ch.dvbern.oss.lib.dvbern-lib-date</groupId>
-	<artifactId>dvbern-lib-date</artifactId>
+	<groupId>ch.dvbern.oss.date-helper</groupId>
+	<artifactId>date-helper</artifactId>
 	<version>(NEWEST_VERSION)</version>
 </dependency>
 ```
@@ -36,7 +36,7 @@ One healthy social atmospehere is very important to us, wherefore we rate our Co
 
 * **DV Bern AG** - *Initial work* - [dvbern](https://github.com/dvbern)
 
-See also the list of [contributors](https://github.com/dvbern/lib-excelmerger/contributors)
+See also the list of [contributors](https://github.com/dvbern/date-helper/contributors)
  who participated in this project.
 
 ## License
