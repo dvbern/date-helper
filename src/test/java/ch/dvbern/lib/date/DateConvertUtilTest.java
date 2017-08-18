@@ -30,45 +30,42 @@ import junit.framework.TestCase;
  */
 public class DateConvertUtilTest extends TestCase {
 
+	private Date now = new Date();
 
-    private Date now = new Date();
+	public void testConvertAsInstant() {
+		Instant nowAsInstant = DateConvertUtils.asInstant(now);
+		Date convertedBack = DateConvertUtils.asUtilDate(nowAsInstant);
+		Assert.assertEquals(now, convertedBack);
 
-    public void testConvertAsInstant(){
-        Instant nowAsInstant = DateConvertUtils.asInstant(now);
-        Date convertedBack = DateConvertUtils.asUtilDate(nowAsInstant);
-        Assert.assertEquals(now, convertedBack);
+	}
 
-    }
+	public void testConvertAsLocalDate() {
+		//Datum ohne Zeit
+		LocalDate nowAsLocalDate = DateConvertUtils.asLocalDate(DateHelper.stripTime(now));
+		Date convertedBack = DateConvertUtils.asUtilDate(nowAsLocalDate);
 
-    public void testConvertAsLocalDate(){
-        //Datum ohne Zeit
-        LocalDate nowAsLocalDate = DateConvertUtils.asLocalDate(DateHelper.stripTime(now));
-        Date convertedBack = DateConvertUtils.asUtilDate(nowAsLocalDate);
+		Calendar cal1 = Calendar.getInstance();
+		Calendar cal2 = Calendar.getInstance();
+		cal1.setTime(now);
+		Assert.assertNotNull(convertedBack);
+		cal2.setTime(convertedBack);
+		boolean sameDay = cal1.get(Calendar.YEAR) == cal2.get(Calendar.YEAR) &&
+			cal1.get(Calendar.DAY_OF_YEAR) == cal2.get(Calendar.DAY_OF_YEAR);
+		Assert.assertTrue(sameDay);
 
-        Calendar cal1 = Calendar.getInstance();
-        Calendar cal2 = Calendar.getInstance();
-        cal1.setTime(now);
-        Assert.assertNotNull(convertedBack);
-        cal2.setTime(convertedBack);
-        boolean sameDay = cal1.get(Calendar.YEAR) == cal2.get(Calendar.YEAR) &&
-                cal1.get(Calendar.DAY_OF_YEAR) == cal2.get(Calendar.DAY_OF_YEAR);
-        Assert.assertTrue(sameDay);
+	}
 
-    }
+	public void testConvertAsLocalDateTime() {
+		LocalDateTime nowAsLocalDateTime = DateConvertUtils.asLocalDateTime(now);
+		Date convertedBack = DateConvertUtils.asUtilDate(nowAsLocalDateTime);
+		Assert.assertEquals(now, convertedBack);
 
+	}
 
-    public void testConvertAsLocalDateTime(){
-        LocalDateTime nowAsLocalDateTime = DateConvertUtils.asLocalDateTime(now);
-        Date convertedBack = DateConvertUtils.asUtilDate(nowAsLocalDateTime);
-        Assert.assertEquals(now, convertedBack);
+	public void testConvertAsZonedDateTime() {
+		ZonedDateTime zonedDateTime = DateConvertUtils.asZonedDateTime(now);
+		Date convertedBack = DateConvertUtils.asUtilDate(zonedDateTime);
+		Assert.assertEquals(now, convertedBack);
 
-    }
-
-
-    public void testConvertAsZonedDateTime(){
-        ZonedDateTime zonedDateTime = DateConvertUtils.asZonedDateTime(now);
-        Date convertedBack = DateConvertUtils.asUtilDate(zonedDateTime);
-        Assert.assertEquals(now, convertedBack);
-
-    }
+	}
 }

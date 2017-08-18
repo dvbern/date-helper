@@ -22,8 +22,8 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-import junit.framework.TestCase;
 import ch.dvbern.lib.date.DateHelper;
+import junit.framework.TestCase;
 
 public class FeiertageHelperTest extends TestCase {
 
@@ -70,39 +70,50 @@ public class FeiertageHelperTest extends TestCase {
 	public static final String PFINGSTMONTAG_2100 = "17.05.2100";
 	public static final int TEST_YEAR_1 = 2009;
 
+	private static String getFormattedString(Date date) {
+
+		if (date != null) {
+			return (new SimpleDateFormat("dd.MM.yyyy - HH:mm:ss mmmmmm"))
+				.format(date);
+		} else {
+			return "";
+		}
+
+	}
+
 	public void testFeiertag_CH() {
 
 		// Fixe Feiertagen
 		assertEquals(FeiertageHelper.getFeiertag_CH(TEST_YEAR_1,
-				FeiertagSchweiz.NEUJAHRSTAG), parseDate(NEUJAHR));
+			FeiertagSchweiz.NEUJAHRSTAG), parseDate(NEUJAHR));
 		assertEquals(FeiertageHelper.getFeiertag_CH(TEST_YEAR_1,
-				FeiertagSchweiz.BECHTOLDSTAG), parseDate(BECHTOLDSTAG));
+			FeiertagSchweiz.BECHTOLDSTAG), parseDate(BECHTOLDSTAG));
 		assertEquals(FeiertageHelper.getFeiertag_CH(TEST_YEAR_1,
-				FeiertagSchweiz.NATIONALFEIERTAG), parseDate(NATIONALTAG));
+			FeiertagSchweiz.NATIONALFEIERTAG), parseDate(NATIONALTAG));
 		assertEquals(FeiertageHelper.getFeiertag_CH(TEST_YEAR_1,
-				FeiertagSchweiz.WEIHNACHTEN), parseDate(WEIHNACHTEN));
+			FeiertagSchweiz.WEIHNACHTEN), parseDate(WEIHNACHTEN));
 		assertEquals(FeiertageHelper.getFeiertag_CH(TEST_YEAR_1,
-				FeiertagSchweiz.STEPHANSTAG), parseDate(STEPHANSTAG));
+			FeiertagSchweiz.STEPHANSTAG), parseDate(STEPHANSTAG));
 		assertEquals(FeiertageHelper.getFeiertag_CH(TEST_YEAR_1,
-				FeiertagSchweiz.NATIONALFEIERTAG), parseDate(NATIONALTAG));
+			FeiertagSchweiz.NATIONALFEIERTAG), parseDate(NATIONALTAG));
 
 		// Bewegliche Feiertage
 		assertEquals(FeiertageHelper.getFeiertag_CH(TEST_YEAR_1,
-				FeiertagSchweiz.KARFREITAG), parseDate(KARFREITAG_2009));
+			FeiertagSchweiz.KARFREITAG), parseDate(KARFREITAG_2009));
 		assertEquals(FeiertageHelper.getFeiertag_CH(TEST_YEAR_1,
-				FeiertagSchweiz.OSTERN), parseDate(OSTERN_2009));
+			FeiertagSchweiz.OSTERN), parseDate(OSTERN_2009));
 		assertEquals(FeiertageHelper.getFeiertag_CH(TEST_YEAR_1,
-				FeiertagSchweiz.OSTERMONTAG), parseDate(OSTERMONTAG_2009));
+			FeiertagSchweiz.OSTERMONTAG), parseDate(OSTERMONTAG_2009));
 		assertEquals(FeiertageHelper.getFeiertag_CH(TEST_YEAR_1,
-				FeiertagSchweiz.AUFFAHRT), parseDate(AUFFAHRT_2009));
+			FeiertagSchweiz.AUFFAHRT), parseDate(AUFFAHRT_2009));
 		assertEquals(FeiertageHelper.getFeiertag_CH(TEST_YEAR_1,
-				FeiertagSchweiz.PFINGSTEN), parseDate(PFINGSTEN_2009));
+			FeiertagSchweiz.PFINGSTEN), parseDate(PFINGSTEN_2009));
 		assertEquals(FeiertageHelper.getFeiertag_CH(TEST_YEAR_1,
-				FeiertagSchweiz.PFINGSTMONTAG), parseDate(PFINGSTMONTAG_2009));
+			FeiertagSchweiz.PFINGSTMONTAG), parseDate(PFINGSTMONTAG_2009));
 
 		try {
 			assertNull("IllegalArgumentException wanted", FeiertageHelper
-					.getFeiertag_CH(TEST_YEAR_1, null));
+				.getFeiertag_CH(TEST_YEAR_1, null));
 		} catch (IllegalArgumentException e) {
 		}
 	}
@@ -110,120 +121,120 @@ public class FeiertageHelperTest extends TestCase {
 	public void testFeiertage_CH() {
 
 		assertFalse("Montag " + MONTAG + " ist kein Feiertag", FeiertageHelper
-				.isFeiertag_CH(parseDate(MONTAG)));
+			.isFeiertag_CH(parseDate(MONTAG)));
 		assertFalse("Dienstag " + DIENSTAG + " ist kein Feiertag",
-				FeiertageHelper.isFeiertag_CH(parseDate(DIENSTAG)));
+			FeiertageHelper.isFeiertag_CH(parseDate(DIENSTAG)));
 		assertFalse("Mittwoch " + MITTWOCH + " ist kein Feiertag",
-				FeiertageHelper.isFeiertag_CH(parseDate(MITTWOCH)));
+			FeiertageHelper.isFeiertag_CH(parseDate(MITTWOCH)));
 		assertFalse("Donnerstag " + DONNERSTAG + " ist kein Feiertag",
-				FeiertageHelper.isFeiertag_CH(parseDate(DONNERSTAG)));
+			FeiertageHelper.isFeiertag_CH(parseDate(DONNERSTAG)));
 		assertFalse("Freitag " + FREITAG + " ist kein Feiertag",
-				FeiertageHelper.isFeiertag_CH(parseDate(FREITAG)));
+			FeiertageHelper.isFeiertag_CH(parseDate(FREITAG)));
 		assertTrue("Samstag " + SAMSTAG + " ist ein Feiertag", FeiertageHelper
-				.isFeiertag_CH(parseDate(SAMSTAG)));
+			.isFeiertag_CH(parseDate(SAMSTAG)));
 		assertTrue("Sonntag " + SONNTAG + " ist ein Feiertag", FeiertageHelper
-				.isFeiertag_CH(parseDate(SONNTAG)));
+			.isFeiertag_CH(parseDate(SONNTAG)));
 		assertFalse("9/11 " + SEPT_11 + " ist kein Feiertag", FeiertageHelper
-				.isFeiertag_CH(parseDate(SEPT_11)));
+			.isFeiertag_CH(parseDate(SEPT_11)));
 
 		assertTrue("NEUJAHR " + NEUJAHR + " ist ein Feiertag", FeiertageHelper
-				.isFeiertag_CH(parseDate(NEUJAHR)));
+			.isFeiertag_CH(parseDate(NEUJAHR)));
 		assertTrue("NEUJAHR_MIN " + NEUJAHR_MIN + " ist ein Feiertag",
-				FeiertageHelper.isFeiertag_CH(parseDate(NEUJAHR_MIN)));
+			FeiertageHelper.isFeiertag_CH(parseDate(NEUJAHR_MIN)));
 		assertTrue("NEUJAHR_MAX " + NEUJAHR_MAX + " ist ein Feiertag",
-				FeiertageHelper.isFeiertag_CH(parseDate(NEUJAHR_MAX)));
+			FeiertageHelper.isFeiertag_CH(parseDate(NEUJAHR_MAX)));
 		assertTrue("BECHTOLDSTAG " + BECHTOLDSTAG + " ist ein Feiertag",
-				FeiertageHelper.isFeiertag_CH(parseDate(BECHTOLDSTAG)));
+			FeiertageHelper.isFeiertag_CH(parseDate(BECHTOLDSTAG)));
 		assertTrue("NATIONALTAG " + NATIONALTAG + " ist ein Feiertag",
-				FeiertageHelper.isFeiertag_CH(parseDate(NATIONALTAG)));
+			FeiertageHelper.isFeiertag_CH(parseDate(NATIONALTAG)));
 		assertTrue("WEIHNACHTEN " + WEIHNACHTEN + " ist ein Feiertag",
-				FeiertageHelper.isFeiertag_CH(parseDate(WEIHNACHTEN)));
+			FeiertageHelper.isFeiertag_CH(parseDate(WEIHNACHTEN)));
 		assertTrue("STEPHANTAG " + STEPHANSTAG + " ist ein Feiertag",
-				FeiertageHelper.isFeiertag_CH(parseDate(STEPHANSTAG)));
+			FeiertageHelper.isFeiertag_CH(parseDate(STEPHANSTAG)));
 
 		assertTrue("KARLFREITAG_2009 " + KARFREITAG_2009 + " ist ein Feiertag",
-				FeiertageHelper.isFeiertag_CH(parseDate(KARFREITAG_2009)));
+			FeiertageHelper.isFeiertag_CH(parseDate(KARFREITAG_2009)));
 		assertTrue("OSTERN_2009 " + OSTERN_2009 + " ist ein Feiertag",
-				FeiertageHelper.isFeiertag_CH(parseDate(OSTERN_2009)));
+			FeiertageHelper.isFeiertag_CH(parseDate(OSTERN_2009)));
 		assertTrue(
-				"OSTERMONTAG_2009 " + OSTERMONTAG_2009 + " ist ein Feiertag",
-				FeiertageHelper.isFeiertag_CH(parseDate(OSTERMONTAG_2009)));
+			"OSTERMONTAG_2009 " + OSTERMONTAG_2009 + " ist ein Feiertag",
+			FeiertageHelper.isFeiertag_CH(parseDate(OSTERMONTAG_2009)));
 		assertTrue("AUFFAHRT_2009 " + AUFFAHRT_2009 + " ist ein Feiertag",
-				FeiertageHelper.isFeiertag_CH(parseDate(AUFFAHRT_2009)));
+			FeiertageHelper.isFeiertag_CH(parseDate(AUFFAHRT_2009)));
 		assertTrue("PFINGSTEN_2009 " + PFINGSTEN_2009 + " ist ein Feiertag",
-				FeiertageHelper.isFeiertag_CH(parseDate(PFINGSTEN_2009)));
+			FeiertageHelper.isFeiertag_CH(parseDate(PFINGSTEN_2009)));
 		assertTrue("PFINGSTMONTAG_2009 " + PFINGSTMONTAG_2009
-				+ " ist ein Feiertag", FeiertageHelper
-				.isFeiertag_CH(parseDate(PFINGSTMONTAG_2009)));
+			+ " ist ein Feiertag", FeiertageHelper
+			.isFeiertag_CH(parseDate(PFINGSTMONTAG_2009)));
 
 		assertTrue("KARLFREITAG_2014 " + KARFREITAG_2014 + " ist ein Feiertag",
-				FeiertageHelper.isFeiertag_CH(parseDate(KARFREITAG_2014)));
+			FeiertageHelper.isFeiertag_CH(parseDate(KARFREITAG_2014)));
 		assertTrue("OSTERN_2014 " + OSTERN_2014 + " ist ein Feiertag",
-				FeiertageHelper.isFeiertag_CH(parseDate(OSTERN_2014)));
+			FeiertageHelper.isFeiertag_CH(parseDate(OSTERN_2014)));
 		assertTrue(
-				"OSTERMONTAG_2014 " + OSTERMONTAG_2014 + " ist ein Feiertag",
-				FeiertageHelper.isFeiertag_CH(parseDate(OSTERMONTAG_2014)));
+			"OSTERMONTAG_2014 " + OSTERMONTAG_2014 + " ist ein Feiertag",
+			FeiertageHelper.isFeiertag_CH(parseDate(OSTERMONTAG_2014)));
 		assertTrue("AUFFAHRT_2014 " + AUFFAHRT_2014 + " ist ein Feiertag",
-				FeiertageHelper.isFeiertag_CH(parseDate(AUFFAHRT_2014)));
+			FeiertageHelper.isFeiertag_CH(parseDate(AUFFAHRT_2014)));
 		assertTrue("PFINGSTEN_2014 " + PFINGSTEN_2014 + " ist ein Feiertag",
-				FeiertageHelper.isFeiertag_CH(parseDate(PFINGSTEN_2014)));
+			FeiertageHelper.isFeiertag_CH(parseDate(PFINGSTEN_2014)));
 		assertTrue("PFINGSTMONTAG_2014 " + PFINGSTMONTAG_2014
-				+ " ist ein Feiertag", FeiertageHelper
-				.isFeiertag_CH(parseDate(PFINGSTMONTAG_2014)));
+			+ " ist ein Feiertag", FeiertageHelper
+			.isFeiertag_CH(parseDate(PFINGSTMONTAG_2014)));
 
 		assertTrue("KARLFREITAG_2100 " + KARFREITAG_2100 + " ist ein Feiertag",
-				FeiertageHelper.isFeiertag_CH(parseDate(KARFREITAG_2100)));
+			FeiertageHelper.isFeiertag_CH(parseDate(KARFREITAG_2100)));
 		assertTrue("OSTERN_2100 " + OSTERN_2100 + " ist ein Feiertag",
-				FeiertageHelper.isFeiertag_CH(parseDate(OSTERN_2100)));
+			FeiertageHelper.isFeiertag_CH(parseDate(OSTERN_2100)));
 		assertTrue(
-				"OSTERMONTAG_2100 " + OSTERMONTAG_2100 + " ist ein Feiertag",
-				FeiertageHelper.isFeiertag_CH(parseDate(OSTERMONTAG_2100)));
+			"OSTERMONTAG_2100 " + OSTERMONTAG_2100 + " ist ein Feiertag",
+			FeiertageHelper.isFeiertag_CH(parseDate(OSTERMONTAG_2100)));
 		assertTrue("AUFFAHRT_2100 " + AUFFAHRT_2100 + " ist ein Feiertag",
-				FeiertageHelper.isFeiertag_CH(parseDate(AUFFAHRT_2100)));
+			FeiertageHelper.isFeiertag_CH(parseDate(AUFFAHRT_2100)));
 		assertTrue("PFINGSTEN_2100 " + PFINGSTEN_2100 + " ist ein Feiertag",
-				FeiertageHelper.isFeiertag_CH(parseDate(PFINGSTEN_2100)));
+			FeiertageHelper.isFeiertag_CH(parseDate(PFINGSTEN_2100)));
 		assertTrue("PFINGSTMONTAG_2100 " + PFINGSTMONTAG_2100
-				+ " ist ein Feiertag", FeiertageHelper
-				.isFeiertag_CH(parseDate(PFINGSTMONTAG_2100)));
+			+ " ist ein Feiertag", FeiertageHelper
+			.isFeiertag_CH(parseDate(PFINGSTMONTAG_2100)));
 
 		// Alternativ method
 		assertTrue("NEUJAHR " + "01.01.1969" + " ist ein Feiertag",
-				FeiertageHelper.isFeiertag_CH(01, 01, 1969));
+			FeiertageHelper.isFeiertag_CH(01, 01, 1969));
 
 		// Datum mit Time gesetzt
 		Calendar cal = Calendar.getInstance();
 		cal.set(TEST_YEAR_1, 0, 1);
 		assertTrue("NEUJAHR " + "01.01.2009" + " ist ein Feiertag",
-				FeiertageHelper.isFeiertag_CH(cal.getTime()));
+			FeiertageHelper.isFeiertag_CH(cal.getTime()));
 
 		// IllegalArgumentException
 		try {
 			assertNull("IllegalArgumentException wanted", FeiertageHelper
-					.isFeiertag_CH(null));
+				.isFeiertag_CH(null));
 		} catch (IllegalArgumentException e) {
 		}
 
 		try {
 			assertNull("IllegalArgumentException wanted", FeiertageHelper
-					.isFeiertag_CH(0, 12, TEST_YEAR_1));
+				.isFeiertag_CH(0, 12, TEST_YEAR_1));
 		} catch (IllegalArgumentException e) {
 		}
 
 		try {
 			assertNull("IllegalArgumentException wanted", FeiertageHelper
-					.isFeiertag_CH(1, 0, TEST_YEAR_1));
+				.isFeiertag_CH(1, 0, TEST_YEAR_1));
 		} catch (IllegalArgumentException e) {
 		}
 
 		try {
 			assertNull("IllegalArgumentException wanted", FeiertageHelper
-					.isFeiertag_CH(1, 12, 1499));
+				.isFeiertag_CH(1, 12, 1499));
 		} catch (IllegalArgumentException e) {
 		}
 
 		try {
 			assertNull("IllegalArgumentException wanted", FeiertageHelper
-					.isFeiertag_CH(-1, -1, -TEST_YEAR_1));
+				.isFeiertag_CH(-1, -1, -TEST_YEAR_1));
 		} catch (IllegalArgumentException e) {
 		}
 	}
@@ -231,51 +242,51 @@ public class FeiertageHelperTest extends TestCase {
 	public void testNextWorkingDay() {
 
 		assertEquals(FeiertageHelper.getNextWorkingDate(parseDate(MONTAG), 1),
-				parseDate(DIENSTAG));
+			parseDate(DIENSTAG));
 		assertEquals(FeiertageHelper.getNextWorkingDate(parseDate(MONTAG), 2),
-				parseDate(MITTWOCH));
+			parseDate(MITTWOCH));
 		assertEquals(FeiertageHelper.getNextWorkingDate(parseDate(MONTAG), 3),
-				parseDate(DONNERSTAG));
+			parseDate(DONNERSTAG));
 		assertEquals(FeiertageHelper.getNextWorkingDate(parseDate(MONTAG), 4),
-				parseDate(FREITAG));
+			parseDate(FREITAG));
 		assertEquals(FeiertageHelper.getNextWorkingDate(parseDate(MONTAG), 5),
-				parseDate(MONTAG_NEXT));
+			parseDate(MONTAG_NEXT));
 		assertEquals(FeiertageHelper.getNextWorkingDate(parseDate(FREITAG), 1),
-				parseDate(MONTAG_NEXT));
+			parseDate(MONTAG_NEXT));
 		assertEquals(FeiertageHelper.getNextWorkingDate(parseDate(SAMSTAG), 1),
-				parseDate(MONTAG_NEXT));
+			parseDate(MONTAG_NEXT));
 
 		assertEquals(FeiertageHelper.getNextWorkingDate(
-				parseDate("30.12.2008"), 1), parseDate("31.12.2008"));
+			parseDate("30.12.2008"), 1), parseDate("31.12.2008"));
 		assertEquals(FeiertageHelper.getNextWorkingDate(
-				parseDate("30.12.2008"), 2), parseDate("05.01.2009"));
+			parseDate("30.12.2008"), 2), parseDate("05.01.2009"));
 		assertEquals(FeiertageHelper.getNextWorkingDate(
-				parseDate("01.04.2009"), 20), parseDate("21.04.2009")); // keine
+			parseDate("01.04.2009"), 20), parseDate("21.04.2009")); // keine
 		// Feiertage
 		assertEquals(FeiertageHelper.getNextWorkingDate(
-				parseDate("01.04.2009"), 10), parseDate("14.04.2009")); // �ber
+			parseDate("01.04.2009"), 10), parseDate("14.04.2009")); // �ber
 		// Ostern
 
 		// Zero-tests
 		assertEquals(FeiertageHelper.getNextWorkingDate(parseDate(MONTAG), 0),
-				parseDate(MONTAG));
+			parseDate(MONTAG));
 		assertEquals(FeiertageHelper.getNextWorkingDate(parseDate(SAMSTAG), 0),
-				parseDate(MONTAG_NEXT));
+			parseDate(MONTAG_NEXT));
 		assertEquals(FeiertageHelper.getNextWorkingDate(parseDate(SONNTAG), 0),
-				parseDate(MONTAG_NEXT));
+			parseDate(MONTAG_NEXT));
 		assertEquals(FeiertageHelper.getNextWorkingDate(
-				parseDate(KARFREITAG_2009), 0), parseDate("14.04.2009"));
+			parseDate(KARFREITAG_2009), 0), parseDate("14.04.2009"));
 
 		// IllegalArgumentException
 		try {
 			assertNull("IllegalArgumentException wanted", FeiertageHelper
-					.getNextWorkingDate(null, 0));
+				.getNextWorkingDate(null, 0));
 		} catch (IllegalArgumentException e) {
 			// do nothing. Exception Wanted.
 		}
 		try {
 			assertNull("IllegalArgumentException wanted", FeiertageHelper
-					.getNextWorkingDate(new Date(), -1));
+				.getNextWorkingDate(new Date(), -1));
 		} catch (IllegalArgumentException e) {
 			// do nothing. Exception Wanted.
 		}
@@ -289,48 +300,48 @@ public class FeiertageHelperTest extends TestCase {
 		sperrTagen.add(parseDate(DONNERSTAG));
 
 		assertEquals(FeiertageHelper.getNextWorkingDate(parseDate(MONTAG), 1,
-				sperrTagen), parseDate(FREITAG));
+			sperrTagen), parseDate(FREITAG));
 		assertEquals(FeiertageHelper.getNextWorkingDate(parseDate(MONTAG), 2,
-				sperrTagen), parseDate(FREITAG));
+			sperrTagen), parseDate(FREITAG));
 		assertEquals(FeiertageHelper.getNextWorkingDate(parseDate(MONTAG), 3,
-				sperrTagen), parseDate(FREITAG));
+			sperrTagen), parseDate(FREITAG));
 		assertEquals(FeiertageHelper.getNextWorkingDate(parseDate(MONTAG), 4,
-				sperrTagen), parseDate(FREITAG));
+			sperrTagen), parseDate(FREITAG));
 		assertEquals(FeiertageHelper.getNextWorkingDate(parseDate(MONTAG), 5,
-				sperrTagen), parseDate(MONTAG_NEXT));
+			sperrTagen), parseDate(MONTAG_NEXT));
 		assertEquals(FeiertageHelper.getNextWorkingDate(parseDate(FREITAG), 1,
-				sperrTagen), parseDate(MONTAG_NEXT));
+			sperrTagen), parseDate(MONTAG_NEXT));
 
 		// Zero-tests
 		assertEquals(FeiertageHelper.getNextWorkingDate(parseDate(MONTAG), 0,
-				sperrTagen), parseDate(MONTAG));
+			sperrTagen), parseDate(MONTAG));
 		assertEquals(FeiertageHelper.getNextWorkingDate(parseDate(DIENSTAG), 0,
-				sperrTagen), parseDate(FREITAG));
+			sperrTagen), parseDate(FREITAG));
 		assertEquals(FeiertageHelper.getNextWorkingDate(parseDate(FREITAG), 0,
-				sperrTagen), parseDate(FREITAG));
+			sperrTagen), parseDate(FREITAG));
 		assertEquals(FeiertageHelper.getNextWorkingDate(parseDate(SAMSTAG), 0,
-				sperrTagen), parseDate(MONTAG_NEXT));
+			sperrTagen), parseDate(MONTAG_NEXT));
 		assertEquals(FeiertageHelper.getNextWorkingDate(parseDate(SONNTAG), 0,
-				sperrTagen), parseDate(MONTAG_NEXT));
+			sperrTagen), parseDate(MONTAG_NEXT));
 
 		// Null-tests
 		assertEquals(FeiertageHelper.getNextWorkingDate(parseDate(MONTAG), 0,
-				null), parseDate(MONTAG));
+			null), parseDate(MONTAG));
 		assertEquals(FeiertageHelper.getNextWorkingDate(parseDate(MONTAG), 1,
-				null), parseDate(DIENSTAG));
+			null), parseDate(DIENSTAG));
 		assertEquals(FeiertageHelper.getNextWorkingDate(parseDate(FREITAG), 1,
-				null), parseDate(MONTAG_NEXT));
+			null), parseDate(MONTAG_NEXT));
 
 		// IllegalArgumentException
 		try {
 			assertNull("IllegalArgumentException wanted", FeiertageHelper
-					.getNextWorkingDate(null, 0, sperrTagen));
+				.getNextWorkingDate(null, 0, sperrTagen));
 		} catch (IllegalArgumentException e) {
 			// do nothing. Exception Wanted.
 		}
 		try {
 			assertNull("IllegalArgumentException wanted", FeiertageHelper
-					.getNextWorkingDate(new Date(), -1, sperrTagen));
+				.getNextWorkingDate(new Date(), -1, sperrTagen));
 		} catch (IllegalArgumentException e) {
 			// do nothing. Exception Wanted.
 		}
@@ -344,50 +355,50 @@ public class FeiertageHelperTest extends TestCase {
 		sperrTagen.add(parseDate(DONNERSTAG));
 
 		assertEquals(FeiertageHelper.getPreviousWorkingDate(
-				parseDate(MONTAG_NEXT), 1, sperrTagen), parseDate(FREITAG));
+			parseDate(MONTAG_NEXT), 1, sperrTagen), parseDate(FREITAG));
 		assertEquals(FeiertageHelper.getPreviousWorkingDate(
-				parseDate(MONTAG_NEXT), 2, sperrTagen), parseDate(FREITAG));
+			parseDate(MONTAG_NEXT), 2, sperrTagen), parseDate(FREITAG));
 		assertEquals(FeiertageHelper.getPreviousWorkingDate(
-				parseDate(MONTAG_NEXT), 3, sperrTagen), parseDate(FREITAG));
+			parseDate(MONTAG_NEXT), 3, sperrTagen), parseDate(FREITAG));
 		assertEquals(FeiertageHelper.getPreviousWorkingDate(
-				parseDate(MONTAG_NEXT), 4, sperrTagen), parseDate(MONTAG));
+			parseDate(MONTAG_NEXT), 4, sperrTagen), parseDate(MONTAG));
 		assertEquals(FeiertageHelper.getPreviousWorkingDate(
-				parseDate(MONTAG_NEXT), 5, sperrTagen), parseDate(MONTAG));
+			parseDate(MONTAG_NEXT), 5, sperrTagen), parseDate(MONTAG));
 		assertEquals(FeiertageHelper.getPreviousWorkingDate(
-				parseDate(MONTAG_NEXT), 6, sperrTagen), parseDate(MONTAG));
+			parseDate(MONTAG_NEXT), 6, sperrTagen), parseDate(MONTAG));
 		assertEquals(FeiertageHelper.getPreviousWorkingDate(
-				parseDate(MONTAG_NEXT), 7, sperrTagen), parseDate(MONTAG));
+			parseDate(MONTAG_NEXT), 7, sperrTagen), parseDate(MONTAG));
 
 		// Zero-tests
 		assertEquals(FeiertageHelper.getPreviousWorkingDate(parseDate(MONTAG),
-				0, sperrTagen), parseDate(MONTAG));
+			0, sperrTagen), parseDate(MONTAG));
 		assertEquals(FeiertageHelper.getPreviousWorkingDate(
-				parseDate(DIENSTAG), 0, sperrTagen), parseDate(MONTAG));
+			parseDate(DIENSTAG), 0, sperrTagen), parseDate(MONTAG));
 		assertEquals(FeiertageHelper.getPreviousWorkingDate(
-				parseDate(MITTWOCH), 0, sperrTagen), parseDate(MONTAG));
+			parseDate(MITTWOCH), 0, sperrTagen), parseDate(MONTAG));
 		assertEquals(FeiertageHelper.getPreviousWorkingDate(
-				parseDate(DONNERSTAG), 0, sperrTagen), parseDate(MONTAG));
+			parseDate(DONNERSTAG), 0, sperrTagen), parseDate(MONTAG));
 		assertEquals(FeiertageHelper.getPreviousWorkingDate(parseDate(FREITAG),
-				0, sperrTagen), parseDate(FREITAG));
+			0, sperrTagen), parseDate(FREITAG));
 
 		// Null-tests
 		assertEquals(FeiertageHelper.getPreviousWorkingDate(parseDate(MONTAG),
-				0, null), parseDate(MONTAG));
+			0, null), parseDate(MONTAG));
 		assertEquals(FeiertageHelper.getPreviousWorkingDate(
-				parseDate(DIENSTAG), 1, null), parseDate(MONTAG));
+			parseDate(DIENSTAG), 1, null), parseDate(MONTAG));
 		assertEquals(FeiertageHelper.getPreviousWorkingDate(parseDate(FREITAG),
-				1, null), parseDate(DONNERSTAG));
+			1, null), parseDate(DONNERSTAG));
 
 		// IllegalArgumentException
 		try {
 			assertNull("IllegalArgumentException wanted", FeiertageHelper
-					.getPreviousWorkingDate(null, 0));
+				.getPreviousWorkingDate(null, 0));
 		} catch (IllegalArgumentException e) {
 			// do nothing. Exception Wanted.
 		}
 		try {
 			assertNull("IllegalArgumentException wanted", FeiertageHelper
-					.getPreviousWorkingDate(new Date(), -1));
+				.getPreviousWorkingDate(new Date(), -1));
 		} catch (IllegalArgumentException e) {
 			// do nothing. Exception Wanted.
 		}
@@ -397,90 +408,90 @@ public class FeiertageHelperTest extends TestCase {
 
 		// Normale Wochen
 		assertEquals(1, FeiertageHelper.getAnzahlArbeitstage(parseDate(MONTAG),
-				parseDate(MONTAG)));
+			parseDate(MONTAG)));
 		assertEquals(2, FeiertageHelper.getAnzahlArbeitstage(parseDate(MONTAG),
-				parseDate(DIENSTAG)));
+			parseDate(DIENSTAG)));
 		assertEquals(5, FeiertageHelper.getAnzahlArbeitstage(parseDate(MONTAG),
-				parseDate(FREITAG)));
+			parseDate(FREITAG)));
 		assertEquals(5, FeiertageHelper.getAnzahlArbeitstage(parseDate(MONTAG),
-				parseDate(SAMSTAG)));
+			parseDate(SAMSTAG)));
 		assertEquals(5, FeiertageHelper.getAnzahlArbeitstage(parseDate(MONTAG),
-				parseDate(SONNTAG)));
+			parseDate(SONNTAG)));
 		assertEquals(6, FeiertageHelper.getAnzahlArbeitstage(parseDate(MONTAG),
-				parseDate(MONTAG_NEXT)));
+			parseDate(MONTAG_NEXT)));
 		assertEquals(0, FeiertageHelper.getAnzahlArbeitstage(
-				parseDate(SAMSTAG), parseDate(SAMSTAG)));
+			parseDate(SAMSTAG), parseDate(SAMSTAG)));
 		assertEquals(0, FeiertageHelper.getAnzahlArbeitstage(
-				parseDate(SAMSTAG), parseDate(SONNTAG)));
+			parseDate(SAMSTAG), parseDate(SONNTAG)));
 		assertEquals(1, FeiertageHelper.getAnzahlArbeitstage(
-				parseDate(SAMSTAG), parseDate(MONTAG_NEXT)));
+			parseDate(SAMSTAG), parseDate(MONTAG_NEXT)));
 		assertEquals(11, FeiertageHelper.getAnzahlArbeitstage(
-				parseDate("01.12.2008"), parseDate("15.12.2008")));
+			parseDate("01.12.2008"), parseDate("15.12.2008")));
 		assertEquals(3, FeiertageHelper.getAnzahlArbeitstage(
-				parseDate("17.12.2008"), parseDate("20.12.2008")));
+			parseDate("17.12.2008"), parseDate("20.12.2008")));
 
 		// Datum mit Zeit (Zeit ignorieren)
 		assertEquals(1, FeiertageHelper.getAnzahlArbeitstage(DateHelper
-				.newDate(55, 50, 23, 3, 3, 2010), DateHelper.newDate(00, 00,
-				00, 3, 3, 2010)));
+			.newDate(55, 50, 23, 3, 3, 2010), DateHelper.newDate(00, 00,
+			00, 3, 3, 2010)));
 
 		// Weihnachten 2011
 		assertEquals(21, FeiertageHelper.getAnzahlArbeitstage(
-				parseDate("01.12.2011"), parseDate("31.12.2011")));
+			parseDate("01.12.2011"), parseDate("31.12.2011")));
 		assertEquals(0, FeiertageHelper.getAnzahlArbeitstage(
-				parseDate("25.12.2011"), parseDate("26.12.2011")));
+			parseDate("25.12.2011"), parseDate("26.12.2011")));
 		assertEquals(1, FeiertageHelper.getAnzahlArbeitstage(
-				parseDate("25.12.2011"), parseDate("27.12.2011")));
+			parseDate("25.12.2011"), parseDate("27.12.2011")));
 
 		// Neujahr 2010
 		assertEquals(0, FeiertageHelper.getAnzahlArbeitstage(
-				parseDate("01.01.2010"), parseDate("01.01.2010")));
+			parseDate("01.01.2010"), parseDate("01.01.2010")));
 		assertEquals(0, FeiertageHelper.getAnzahlArbeitstage(
-				parseDate("01.01.2010"), parseDate("02.01.2010")));
+			parseDate("01.01.2010"), parseDate("02.01.2010")));
 		assertEquals(0, FeiertageHelper.getAnzahlArbeitstage(
-				parseDate("01.01.2010"), parseDate("03.01.2010")));
+			parseDate("01.01.2010"), parseDate("03.01.2010")));
 		assertEquals(1, FeiertageHelper.getAnzahlArbeitstage(
-				parseDate("01.01.2010"), parseDate("04.01.2010")));
+			parseDate("01.01.2010"), parseDate("04.01.2010")));
 
 		// Karfreitag/Ostern 2009
 		assertEquals(4, FeiertageHelper.getAnzahlArbeitstage(
-				parseDate("06.04.2009"), parseDate("10.4.2009")));
+			parseDate("06.04.2009"), parseDate("10.4.2009")));
 		assertEquals(8, FeiertageHelper.getAnzahlArbeitstage(
-				parseDate("06.04.2009"), parseDate("17.4.2009")));
+			parseDate("06.04.2009"), parseDate("17.4.2009")));
 		assertEquals(9, FeiertageHelper.getAnzahlArbeitstage(
-				parseDate("06.04.2009"), parseDate("20.4.2009")));
+			parseDate("06.04.2009"), parseDate("20.4.2009")));
 		assertEquals(4, FeiertageHelper.getAnzahlArbeitstage(
-				parseDate("13.04.2009"), parseDate("17.4.2009")));
+			parseDate("13.04.2009"), parseDate("17.4.2009")));
 		assertEquals(5, FeiertageHelper.getAnzahlArbeitstage(
-				parseDate("13.04.2009"), parseDate("20.4.2009")));
+			parseDate("13.04.2009"), parseDate("20.4.2009")));
 
 		// IllegalArgumentException
 		try {
 			assertNull(
-					"DatumVon grösser DatumBis. IllegalArgumentException wanted",
-					FeiertageHelper.getAnzahlArbeitstage(parseDate(DIENSTAG),
-							parseDate(MONTAG)));
+				"DatumVon grösser DatumBis. IllegalArgumentException wanted",
+				FeiertageHelper.getAnzahlArbeitstage(parseDate(DIENSTAG),
+					parseDate(MONTAG)));
 		} catch (IllegalArgumentException e) {
 			// do nothing. Exception Wanted.
 		}
 
 		try {
 			assertNull("null-argument. IllegalArgumentException wanted",
-					FeiertageHelper.getAnzahlArbeitstage(null, null));
+				FeiertageHelper.getAnzahlArbeitstage(null, null));
 		} catch (IllegalArgumentException e) {
 			// do nothing. Exception Wanted.
 		}
 
 		try {
 			assertNull("null-argument. IllegalArgumentException wanted",
-					FeiertageHelper.getAnzahlArbeitstage(null, new Date()));
+				FeiertageHelper.getAnzahlArbeitstage(null, new Date()));
 		} catch (IllegalArgumentException e) {
 			// do nothing. Exception Wanted.
 		}
 
 		try {
 			assertNull("null-argument. IllegalArgumentException wanted",
-					FeiertageHelper.getAnzahlArbeitstage(new Date(), null));
+				FeiertageHelper.getAnzahlArbeitstage(new Date(), null));
 		} catch (IllegalArgumentException e) {
 			// do nothing. Exception Wanted.
 		}
@@ -490,49 +501,49 @@ public class FeiertageHelperTest extends TestCase {
 	public void testPreviousWorkingDayWithSperrTagen() {
 
 		assertEquals(FeiertageHelper.getPreviousWorkingDate(
-				parseDate(MONTAG_NEXT), 1), parseDate(FREITAG));
+			parseDate(MONTAG_NEXT), 1), parseDate(FREITAG));
 		assertEquals(FeiertageHelper.getPreviousWorkingDate(
-				parseDate(MONTAG_NEXT), 2), parseDate(FREITAG));
+			parseDate(MONTAG_NEXT), 2), parseDate(FREITAG));
 		assertEquals(FeiertageHelper.getPreviousWorkingDate(
-				parseDate(MONTAG_NEXT), 3), parseDate(FREITAG));
+			parseDate(MONTAG_NEXT), 3), parseDate(FREITAG));
 		assertEquals(FeiertageHelper.getPreviousWorkingDate(
-				parseDate(MONTAG_NEXT), 4), parseDate(DONNERSTAG));
+			parseDate(MONTAG_NEXT), 4), parseDate(DONNERSTAG));
 		assertEquals(FeiertageHelper.getPreviousWorkingDate(
-				parseDate(MONTAG_NEXT), 5), parseDate(MITTWOCH));
+			parseDate(MONTAG_NEXT), 5), parseDate(MITTWOCH));
 		assertEquals(FeiertageHelper.getPreviousWorkingDate(
-				parseDate(MONTAG_NEXT), 6), parseDate(DIENSTAG));
+			parseDate(MONTAG_NEXT), 6), parseDate(DIENSTAG));
 		assertEquals(FeiertageHelper.getPreviousWorkingDate(
-				parseDate(MONTAG_NEXT), 7), parseDate(MONTAG));
+			parseDate(MONTAG_NEXT), 7), parseDate(MONTAG));
 
 		assertEquals(FeiertageHelper.getPreviousWorkingDate(
-				parseDate("21.04.2009"), 20), parseDate("01.04.2009")); // keine
+			parseDate("21.04.2009"), 20), parseDate("01.04.2009")); // keine
 		// Feiertage
 		assertEquals(FeiertageHelper.getPreviousWorkingDate(
-				parseDate("23.04.2009"), 10), parseDate("09.04.2009")); // �ber
+			parseDate("23.04.2009"), 10), parseDate("09.04.2009")); // �ber
 		// Ostern
 
 		// Zero-tests
 		assertEquals(FeiertageHelper.getPreviousWorkingDate(parseDate(MONTAG),
-				0), parseDate(MONTAG));
+			0), parseDate(MONTAG));
 		assertEquals(FeiertageHelper.getPreviousWorkingDate(parseDate(FREITAG),
-				0), parseDate(FREITAG));
+			0), parseDate(FREITAG));
 		assertEquals(FeiertageHelper.getPreviousWorkingDate(parseDate(SAMSTAG),
-				0), parseDate(FREITAG));
+			0), parseDate(FREITAG));
 		assertEquals(FeiertageHelper.getPreviousWorkingDate(parseDate(SONNTAG),
-				0), parseDate(FREITAG));
+			0), parseDate(FREITAG));
 		assertEquals(FeiertageHelper.getPreviousWorkingDate(
-				parseDate(OSTERMONTAG_2009), 0), parseDate("09.04.2009"));
+			parseDate(OSTERMONTAG_2009), 0), parseDate("09.04.2009"));
 
 		// IllegalArgumentException
 		try {
 			assertNull("IllegalArgumentException wanted", FeiertageHelper
-					.getPreviousWorkingDate(null, 0));
+				.getPreviousWorkingDate(null, 0));
 		} catch (IllegalArgumentException e) {
 			// do nothing. Exception Wanted.
 		}
 		try {
 			assertNull("IllegalArgumentException wanted", FeiertageHelper
-					.getPreviousWorkingDate(new Date(), -1));
+				.getPreviousWorkingDate(new Date(), -1));
 		} catch (IllegalArgumentException e) {
 			// do nothing. Exception Wanted.
 		}
@@ -541,7 +552,7 @@ public class FeiertageHelperTest extends TestCase {
 	public void testPrintOutFeiertage() {
 
 		assertTrue("Keine Feiertage vorhanden", !FeiertageHelper
-				.getFeiertage_CH(TEST_YEAR_1).isEmpty());
+			.getFeiertage_CH(TEST_YEAR_1).isEmpty());
 		for (Feiertag_CH f : FeiertageHelper.getFeiertage_CH(TEST_YEAR_1)) {
 			assertNotNull(f);
 			System.out.println(f.getFeiertag() + ": " + getFormattedString(f));
@@ -551,22 +562,22 @@ public class FeiertageHelperTest extends TestCase {
 	public void testAddWorkingDays() {
 		Date d = parseDate("1.4.2010");
 		assertEquals(parseDate("8.4.2010"), FeiertageHelper
-				.addWorkingDays(d, 3));
+			.addWorkingDays(d, 3));
 		assertEquals(parseDate("1.4.2010"), FeiertageHelper
-				.addWorkingDays(d, 0));
+			.addWorkingDays(d, 0));
 		d = parseDate("2.4.2010");
 		assertEquals(parseDate("6.4.2010"), FeiertageHelper
-				.addWorkingDays(d, 0));
+			.addWorkingDays(d, 0));
 		assertEquals(parseDate("7.4.2010"), FeiertageHelper
-				.addWorkingDays(d, 1));
+			.addWorkingDays(d, 1));
 
 		assertEquals(FeiertageHelper.addWorkingDays(parseDate("2.4.2010"), 0),
-				FeiertageHelper.addWorkingDays(parseDate("1.4.2010"), 1));
+			FeiertageHelper.addWorkingDays(parseDate("1.4.2010"), 1));
 
 		assertEquals(parseDate("6.4.2010"), FeiertageHelper.addWorkingDays(
-				parseDate("2.4.2010"), false, 1));
+			parseDate("2.4.2010"), false, 1));
 		assertEquals(parseDate("7.4.2010"), FeiertageHelper.addWorkingDays(
-				parseDate("2.4.2010"), true, 1));
+			parseDate("2.4.2010"), true, 1));
 
 		try {
 			FeiertageHelper.addWorkingDays(null, 0);
@@ -585,9 +596,9 @@ public class FeiertageHelperTest extends TestCase {
 		l.add(parseDate("8.4.2010"));
 		Date d = parseDate("1.4.2010");
 		assertEquals(parseDate("9.4.2010"), FeiertageHelper.addWorkingDays(d,
-				3, l));
+			3, l));
 		assertEquals(parseDate("1.4.2010"), FeiertageHelper.addWorkingDays(d,
-				0, l));
+			0, l));
 		try {
 			FeiertageHelper.addWorkingDays(null, 0, l);
 		} catch (IllegalArgumentException x) {
@@ -612,8 +623,8 @@ public class FeiertageHelperTest extends TestCase {
 		}
 		Date end = new Date();
 		System.out
-				.println("getFeiertage(): millis to run from year 1500 to 9999: "
-						+ (end.getTime() - start.getTime()));
+			.println("getFeiertage(): millis to run from year 1500 to 9999: "
+				+ (end.getTime() - start.getTime()));
 
 		start = new Date();
 		Date von = parseDate("01.01.2010");
@@ -621,9 +632,9 @@ public class FeiertageHelperTest extends TestCase {
 		FeiertageHelper.getAnzahlArbeitstage(von, bis);
 		end = new Date();
 		System.out.println("getAnzahlArbeitstage(): millis to run from  "
-				+ DateHelper.getFormattedString(von) + " to "
-				+ DateHelper.getFormattedString(bis) + ": "
-				+ (end.getTime() - start.getTime()));
+			+ DateHelper.getFormattedString(von) + " to "
+			+ DateHelper.getFormattedString(bis) + ": "
+			+ (end.getTime() - start.getTime()));
 	}
 
 	private Date parseDate(String aDateString) {
@@ -637,17 +648,6 @@ public class FeiertageHelperTest extends TestCase {
 			e.printStackTrace();
 			return null;
 		}
-	}
-
-	private static String getFormattedString(Date date) {
-
-		if (date != null) {
-			return (new SimpleDateFormat("dd.MM.yyyy - HH:mm:ss mmmmmm"))
-					.format(date);
-		} else {
-			return "";
-		}
-
 	}
 
 }

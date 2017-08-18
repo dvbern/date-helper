@@ -21,13 +21,11 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
-import junit.framework.TestCase;
 import org.junit.Assert;
 import org.junit.Test;
 
 /**
  * @author MUSE
- * 
  */
 public class DateHelperTest {
 
@@ -97,11 +95,11 @@ public class DateHelperTest {
 		Assert.assertTrue("Gleich", DateHelper.isDateLessOrEqual(date1, date3));
 	}
 
-    @Test
-    public void isDateEqualWithTime() {
-	Date date1 = new Date();
-	Date date2 = date1;
-	Date date3 = new Date(date1.getTime() + 1);
+	@Test
+	public void isDateEqualWithTime() {
+		Date date1 = new Date();
+		Date date2 = date1;
+		Date date3 = new Date(date1.getTime() + 1);
 
 		Assert.assertTrue("Danach", DateHelper.isDateLessOrEqual(date1, date3));
 		Assert.assertFalse("Danach", DateHelper.isDateEqualWithTime(date1, date3));
@@ -585,7 +583,7 @@ public class DateHelperTest {
 
 		Date now = new Date();
 		Date current = DateHelper.newDateForExactTime(now, DateHelper.getHour(now), DateHelper.getMinute(now), DateHelper.getSecond(now),
-				DateHelper.getMillisecond(now));
+			DateHelper.getMillisecond(now));
 		Assert.assertEquals(now, current);
 	}
 
