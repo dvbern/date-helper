@@ -28,9 +28,6 @@ public class Feiertag_CH extends Date {
 
 	/**
 	 * Constructor
-	 * 
-	 * @param feiertagSchweiz
-	 * @param timeInMillis
 	 */
 	Feiertag_CH(FeiertagSchweiz feiertagSchweiz, long timeInMillis) {
 		super(timeInMillis);

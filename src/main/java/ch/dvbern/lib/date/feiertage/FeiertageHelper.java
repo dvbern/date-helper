@@ -31,9 +31,8 @@ import ch.dvbern.lib.date.DateHelper;
  * Helper für Schweizer Feiertage. Es sind Samstage, Sonntage, Karfreitag,
  * Ostermontag, Auffahrt, Pfingstmontag, 1. August, 25. Dezember, 26. Dezember,
  * 1. Januar und 2. Januar
- * 
+ *
  * @author PECH
- * 
  */
 public final class FeiertageHelper {
 
@@ -49,12 +48,10 @@ public final class FeiertageHelper {
 	 * Antwortet ein neues Datum welches den nächsten Arbeitstag nach dem Anzahl
 	 * Tagen <code> dayCount </code> ist. <br>
 	 * Dabei werden die offiziellen Feiertage Schweiz berücksichtigt.
-	 * 
-	 * @param date
-	 *            Basis für die Berechnung.
-	 * @param dayCount
-	 *            anzahl Tage. Darf NICHT negativ sein. Mit 0 (zero) wird auch
-	 *            den nächsten Arbeitstag gesucht.
+	 *
+	 * @param date Basis für die Berechnung.
+	 * @param dayCount anzahl Tage. Darf NICHT negativ sein. Mit 0 (zero) wird auch
+	 * den nächsten Arbeitstag gesucht.
 	 * @return a new Date
 	 */
 	public static Date getNextWorkingDate(Date date, int dayCount) {
@@ -78,19 +75,16 @@ public final class FeiertageHelper {
 	 * Tagen <code> dayCount </code> ist. <br>
 	 * Dabei werden die offiziellen Feiertage Schweiz und die
 	 * <code>sperrTagen</code> berücksichtigt.
-	 * 
-	 * @param date
-	 *            Basis für die Berechnung.
-	 * @param dayCount
-	 *            anzahl Tage. Darf NICHT negativ sein. Mit 0 (zero) wird auch
-	 *            den nächsten Arbeitstag gesucht.
-	 * @param sperrTagen
-	 *            Applikations-Spezifiche Tagen, die wie Feiertagen behandelt
-	 *            werden.
+	 *
+	 * @param date Basis für die Berechnung.
+	 * @param dayCount anzahl Tage. Darf NICHT negativ sein. Mit 0 (zero) wird auch
+	 * den nächsten Arbeitstag gesucht.
+	 * @param sperrTagen Applikations-Spezifiche Tagen, die wie Feiertagen behandelt
+	 * werden.
 	 * @return a new Date
 	 */
 	public static Date getNextWorkingDate(Date date, int dayCount,
-			List<? extends Date> sperrTagen) {
+		List<? extends Date> sperrTagen) {
 
 		if (date == null) {
 			throw new IllegalArgumentException("date is null");
@@ -112,7 +106,7 @@ public final class FeiertageHelper {
 	 * Zählt zum per parameter <code>date</code> gegebenen Datum die als
 	 * <code>dayCount</code> gegebene Anzahl Arbeitstage hinzu. Feiertage werden
 	 * übersprungen.
-	 * 
+	 *
 	 * <p>
 	 * Beispiel: Der 1.4.2010 ist ein Donnerstag vor Karfreitag. Wird diesem
 	 * Datum 3 Arbeitstage dazugezählt wird Karfreitag, Ostersamstag, Ostern und
@@ -122,18 +116,16 @@ public final class FeiertageHelper {
 	 * Diese Methode ist dassselbe wie der Aufruf von
 	 * {@link #addWorkingDays(Date, int, List)} mit einer leeren Liste als 3.
 	 * Argument.
-	 * 
-	 * @see #addWorkingDays(Date, int, List)
-	 * @param date
-	 *            Basis für die Berechnung. Wenn <code>date</code> selbst ein
-	 *            Feiertag ist wird die Basis auf den nächsten Arbeitstag
-	 *            gesetzt.
-	 * @param dayCount
-	 *            anzahl Tage. Darf NICHT negativ sein. Mit 0 (zero) wird
-	 *            <code>date</code> zurückgegeben, wenn es sich dabei um einen
-	 *            Arbeitstag handelt, sonst der nächste verfügbare Feiertag..
+	 *
+	 * @param date Basis für die Berechnung. Wenn <code>date</code> selbst ein
+	 * Feiertag ist wird die Basis auf den nächsten Arbeitstag
+	 * gesetzt.
+	 * @param dayCount anzahl Tage. Darf NICHT negativ sein. Mit 0 (zero) wird
+	 * <code>date</code> zurückgegeben, wenn es sich dabei um einen
+	 * Arbeitstag handelt, sonst der nächste verfügbare Feiertag..
 	 * @return der Arbeitstag nach Ablauf von <code>dayCount</code>
-	 *         Arbeitstagen.
+	 * Arbeitstagen.
+	 * @see #addWorkingDays(Date, int, List)
 	 */
 	public static Date addWorkingDays(Date date, int dayCount) {
 		return addWorkingDays(date, dayCount, new ArrayList<Date>());
@@ -143,7 +135,7 @@ public final class FeiertageHelper {
 	 * Zählt zum per parameter <code>date</code> gegebenen Datum die als
 	 * <code>dayCount</code> gegebene Anzahl Arbeitstage hinzu. Feiertage werden
 	 * übersprungen.
-	 * 
+	 *
 	 * <p>
 	 * Beispiel: Der 1.4.2010 ist ein Donnerstag vor Karfreitag. Wird diesem
 	 * Datum 3 Arbeitstage dazugezählt wird Karfreitag, Ostersamstag, Ostern und
@@ -153,26 +145,23 @@ public final class FeiertageHelper {
 	 * Diese Methode ist dassselbe wie der Aufruf von
 	 * {@link #addWorkingDays(Date, boolean, int, List)} mit einer leeren Liste
 	 * als 3. Argument.
-	 * 
-	 * @see #addWorkingDays(Date, boolean, int, List)
-	 * @param date
-	 *            Basis für die Berechnung.
-	 * @param jumpToWorkingDay
-	 *            wenn <code>true</code> wird der Parameter <code>date</code>
-	 *            ignoriert wenn es sich dabei selbst um einen Feiertag handelt.
-	 *            Stattdessen wird von <code>date</code> aus auf den nächsten
-	 *            Werktag gesprungen
-	 * @param dayCount
-	 *            anzahl Tage. Darf NICHT negativ sein. Mit 0 (zero) wird
-	 *            <code>date</code> zurückgegeben, wenn es sich dabei um einen
-	 *            Arbeitstag handelt, sonst der nächste verfügbare Feiertag..
+	 *
+	 * @param date Basis für die Berechnung.
+	 * @param jumpToWorkingDay wenn <code>true</code> wird der Parameter <code>date</code>
+	 * ignoriert wenn es sich dabei selbst um einen Feiertag handelt.
+	 * Stattdessen wird von <code>date</code> aus auf den nächsten
+	 * Werktag gesprungen
+	 * @param dayCount anzahl Tage. Darf NICHT negativ sein. Mit 0 (zero) wird
+	 * <code>date</code> zurückgegeben, wenn es sich dabei um einen
+	 * Arbeitstag handelt, sonst der nächste verfügbare Feiertag..
 	 * @return der Arbeitstag nach Ablauf von <code>dayCount</code>
-	 *         Arbeitstagen.
+	 * Arbeitstagen.
+	 * @see #addWorkingDays(Date, boolean, int, List)
 	 */
 	public static Date addWorkingDays(Date date, boolean jumpToWorkingDay,
-			int dayCount) {
+		int dayCount) {
 		return addWorkingDays(date, jumpToWorkingDay, dayCount,
-				new ArrayList<Date>());
+			new ArrayList<Date>());
 	}
 
 	/**
@@ -182,7 +171,7 @@ public final class FeiertageHelper {
 	 * <p>
 	 * Die Liste <code>sperrTage</code> ist eine Liste von Tagen, welche
 	 * applikationsspezifische Feiertage beinhalten.
-	 * 
+	 *
 	 * <p>
 	 * Beispiel: Der 1.4.2010 ist ein Donnerstag vor Karfreitag. Wird diesem
 	 * Datum 3 Arbeitstage dazugezählt wird Karfreitag, Ostersamstag, Ostern und
@@ -192,22 +181,19 @@ public final class FeiertageHelper {
 	 * Diese Methode ist dassselbe wie der Aufruf von
 	 * {@link #addWorkingDays(Date, boolean, int, List)} mit <code>true</code>
 	 * als 2. Argument.
-	 * 
-	 * 
-	 * @see #addWorkingDays(Date, boolean, int, List)
-	 * @param date
-	 *            Basis für die Berechnung. Wenn <code>date</code> selbst ein
-	 *            Feiertag ist wird die Basis auf den nächsten Arbeitstag
-	 *            gesetzt.
-	 * @param dayCount
-	 *            anzahl Tage. Darf NICHT negativ sein. Mit 0 (zero) wird
-	 *            <code>date</code> zurückgegeben, wenn es sich dabei um einen
-	 *            Arbeitstag handelt, sonst der nächste verfügbare Feiertag..
+	 *
+	 * @param date Basis für die Berechnung. Wenn <code>date</code> selbst ein
+	 * Feiertag ist wird die Basis auf den nächsten Arbeitstag
+	 * gesetzt.
+	 * @param dayCount anzahl Tage. Darf NICHT negativ sein. Mit 0 (zero) wird
+	 * <code>date</code> zurückgegeben, wenn es sich dabei um einen
+	 * Arbeitstag handelt, sonst der nächste verfügbare Feiertag..
 	 * @return der Arbeitstag nach Ablauf von <code>dayCount</code>
-	 *         Arbeitstagen.
+	 * Arbeitstagen.
+	 * @see #addWorkingDays(Date, boolean, int, List)
 	 */
 	public static Date addWorkingDays(Date date, int dayCount,
-			List<? extends Date> sperrTage) {
+		List<? extends Date> sperrTage) {
 		return addWorkingDays(date, true, dayCount, sperrTage);
 	}
 
@@ -218,33 +204,28 @@ public final class FeiertageHelper {
 	 * <p>
 	 * Die Liste <code>sperrTage</code> ist eine Liste von Tagen, welche
 	 * applikationsspezifische Feiertage beinhalten.
-	 * 
+	 *
 	 * <p>
 	 * Beispiel: Der 1.4.2010 ist ein Donnerstag vor Karfreitag. Wird diesem
 	 * Datum 3 Arbeitstage dazugezählt wird Karfreitag, Ostersamstag, Ostern und
 	 * Ostermontag übersprungen. Der Resultierende Arbeitstag ist Donnerstag,
 	 * 8.4.2010.
-	 * 
-	 * 
-	 * 
-	 * @param date
-	 *            Basis für die Berechnung. Wenn <code>date</code> selbst ein
-	 *            Feiertag ist wird die Basis auf den nächsten Arbeitstag
-	 *            gesetzt.
-	 * @param jumpToWorkingDay
-	 *            wenn <code>true</code> wird der Parameter <code>date</code>
-	 *            ignoriert wenn es sich dabei selbst um einen Feiertag handelt.
-	 *            Stattdessen wird von <code>date</code> aus auf den nächsten
-	 *            Werktag gesprungen
-	 * @param dayCount
-	 *            anzahl Tage. Darf NICHT negativ sein. Mit 0 (zero) wird
-	 *            <code>date</code> zurückgegeben, wenn es sich dabei um einen
-	 *            Arbeitstag handelt, sonst der nächste verfügbare Feiertag..
+	 *
+	 * @param date Basis für die Berechnung. Wenn <code>date</code> selbst ein
+	 * Feiertag ist wird die Basis auf den nächsten Arbeitstag
+	 * gesetzt.
+	 * @param jumpToWorkingDay wenn <code>true</code> wird der Parameter <code>date</code>
+	 * ignoriert wenn es sich dabei selbst um einen Feiertag handelt.
+	 * Stattdessen wird von <code>date</code> aus auf den nächsten
+	 * Werktag gesprungen
+	 * @param dayCount anzahl Tage. Darf NICHT negativ sein. Mit 0 (zero) wird
+	 * <code>date</code> zurückgegeben, wenn es sich dabei um einen
+	 * Arbeitstag handelt, sonst der nächste verfügbare Feiertag..
 	 * @return der Arbeitstag nach Ablauf von <code>dayCount</code>
-	 *         Arbeitstagen.
+	 * Arbeitstagen.
 	 */
 	public static Date addWorkingDays(Date date, boolean jumpToWorkingDay,
-			int dayCount, List<? extends Date> sperrTage) {
+		int dayCount, List<? extends Date> sperrTage) {
 		if (date == null) {
 			throw new IllegalArgumentException("date is null");
 		}
@@ -283,12 +264,10 @@ public final class FeiertageHelper {
 	 * Antwortet ein neues Datum welches den vorigen Arbeitstag vor dem Anzahl
 	 * Tagen <code> dayCount </code> ist. <br>
 	 * Dabei werden die offiziellen Feiertage Schweiz berücksichtigt.
-	 * 
-	 * @param date
-	 *            Basis für die Berechnung.
-	 * @param dayCount
-	 *            anzahl Tage. Darf NICHT negativ sein. Mit 0 (zero) wird auch
-	 *            den vorigen Arbeitstag gesucht.
+	 *
+	 * @param date Basis für die Berechnung.
+	 * @param dayCount anzahl Tage. Darf NICHT negativ sein. Mit 0 (zero) wird auch
+	 * den vorigen Arbeitstag gesucht.
 	 * @return a new Date
 	 */
 	public static Date getPreviousWorkingDate(Date date, int dayCount) {
@@ -312,19 +291,16 @@ public final class FeiertageHelper {
 	 * Tagen <code> dayCount </code> ist. <br>
 	 * Dabei werden die offiziellen Feiertage Schweiz und die
 	 * <code>sperrTagen</code> berücksichtigt.
-	 * 
-	 * @param date
-	 *            Basis für die Berechnung.
-	 * @param dayCount
-	 *            anzahl Tage. Darf NICHT negativ sein. Mit 0 (zero) wird auch
-	 *            den vorigen Arbeitstag gesucht.
-	 * @param sperrTagen
-	 *            Applikations-Spezifiche Tagen, die wie Feiertagen behandelt
-	 *            werden.
+	 *
+	 * @param date Basis für die Berechnung.
+	 * @param dayCount anzahl Tage. Darf NICHT negativ sein. Mit 0 (zero) wird auch
+	 * den vorigen Arbeitstag gesucht.
+	 * @param sperrTagen Applikations-Spezifiche Tagen, die wie Feiertagen behandelt
+	 * werden.
 	 * @return a new Date
 	 */
 	public static Date getPreviousWorkingDate(Date date, int dayCount,
-			List<Date> sperrTagen) {
+		List<Date> sperrTagen) {
 
 		if (date == null) {
 			throw new IllegalArgumentException("date is null");
@@ -347,11 +323,9 @@ public final class FeiertageHelper {
 	 * <code>datumBis</code>. <br>
 	 * D.h. Montag bis Freitag mit berücksichtigung der offiziellen Feiertage
 	 * Schweiz.
-	 * 
-	 * @param datumVon
-	 *            Start Berechnung (mitberechnet)
-	 * @param datumBis
-	 *            Ende berechnung (mitberechnet)
+	 *
+	 * @param datumVon Start Berechnung (mitberechnet)
+	 * @param datumBis Ende berechnung (mitberechnet)
 	 * @return Anzahl Arbeitstagen
 	 */
 	public static int getAnzahlArbeitstage(Date datumVon, Date datumBis) {
@@ -364,7 +338,7 @@ public final class FeiertageHelper {
 		}
 		if (DateHelper.isDateLess(datumBis, datumVon)) {
 			throw new IllegalArgumentException(
-					"datumBis ist kleiner als datumVon");
+				"datumBis ist kleiner als datumVon");
 		}
 
 		int count = 0;
@@ -381,21 +355,18 @@ public final class FeiertageHelper {
 
 	/**
 	 * Abfrage Feiertag Schweiz mit Tag, Monat und Jahr.
-	 * 
-	 * @param dayOfMonth
-	 *            Tag im Monat. Werte: 1-31
-	 * @param month
-	 *            Monat im Jahr. Gem. gesunden Menschenverstand (1=Januar,
-	 *            2=Februar, usw. ) Werte: 1-12
-	 * @param year
-	 *            Jahr. Werte: 1500-9999
+	 *
+	 * @param dayOfMonth Tag im Monat. Werte: 1-31
+	 * @param month Monat im Jahr. Gem. gesunden Menschenverstand (1=Januar,
+	 * 2=Februar, usw. ) Werte: 1-12
+	 * @param year Jahr. Werte: 1500-9999
 	 * @return true wenn das Datum ein Samstag, Sonntag oder eidg. Feiertag ist.
 	 */
 	public static boolean isFeiertag_CH(int dayOfMonth, int month, int year) {
 
 		if (dayOfMonth < 1 || dayOfMonth > 31) {
 			throw new IllegalArgumentException(
-					"dateOfMonth not between 1 and 31");
+				"dateOfMonth not between 1 and 31");
 		}
 		if (month < 1 || month > 13) {
 			throw new IllegalArgumentException("month not between 1 and 12");
@@ -416,11 +387,10 @@ public final class FeiertageHelper {
 
 	/**
 	 * Abfrage Feiertag Schweiz mit Datum.
-	 * 
-	 * @param date
-	 *            Datum
+	 *
+	 * @param date Datum
 	 * @return true wenn das Datum ein Samstag, Sonntag oder eine offiziellen
-	 *         Feiertag Schweiz ist.
+	 * Feiertag Schweiz ist.
 	 */
 	public static boolean isFeiertag_CH(Date date) {
 
@@ -431,14 +401,11 @@ public final class FeiertageHelper {
 		GregorianCalendar cal = getCalendar();
 		cal.setTime(date);
 		return isFeiertag_CH(cal.get(Calendar.DAY_OF_MONTH), cal
-				.get(Calendar.MONTH) + 1, cal.get(Calendar.YEAR));
+			.get(Calendar.MONTH) + 1, cal.get(Calendar.YEAR));
 	}
 
 	/**
 	 * Liste der Feiertagen Schweiz pro Jahr.
-	 * 
-	 * @param year
-	 * @return
 	 */
 	public static List<Feiertag_CH> getFeiertage_CH(int year) {
 
@@ -450,10 +417,8 @@ public final class FeiertageHelper {
 
 	/**
 	 * gibt einen Feiertag Schweiz pro Jahr und Name.
-	 * 
-	 * @param year
-	 * @param feiertag
-	 *            .
+	 *
+	 * @param feiertag .
 	 * @return Feiertag_CH oder null.
 	 */
 	public static Feiertag_CH getFeiertag_CH(int year, FeiertagSchweiz feiertag) {
@@ -487,8 +452,6 @@ public final class FeiertageHelper {
 
 	/**
 	 * neues Calendar mit Datum und Zeit undefiniert.
-	 * 
-	 * @return
 	 */
 	private static GregorianCalendar getCalendar() {
 
@@ -517,7 +480,6 @@ public final class FeiertageHelper {
 	}
 
 	/**
-	 * @param tag
 	 * @return ein neues Datum mit Zeit auf 0
 	 */
 	private static Date cleanDate(Date date) {

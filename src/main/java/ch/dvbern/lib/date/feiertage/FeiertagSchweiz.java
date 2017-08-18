@@ -15,59 +15,58 @@
 
 package ch.dvbern.lib.date.feiertage;
 
-
 /**
  * enum der Feiertagen Schweiz.
- * @author pech
  *
+ * @author pech
  */
 public enum FeiertagSchweiz {
-	
+
 	/**
 	 * 1. Januar
 	 */
 	NEUJAHRSTAG,
-	
+
 	/**
 	 * 2. Januar
 	 */
 	BECHTOLDSTAG,
-	
+
 	/**
-	 * Freitag von Ostersonntag 
+	 * Freitag von Ostersonntag
 	 */
 	KARFREITAG,
-	
+
 	/**
 	 * Ostersonntag)
 	 */
 	OSTERN,
-	
+
 	/**
 	 * Montag nach Ostersonntag
 	 */
 	OSTERMONTAG,
-	
+
 	/**
 	 * 39 Tage nach Ostersonntag
 	 */
 	AUFFAHRT,
-	
+
 	/**
 	 * 49 Tage nach Ostersonntag (Sonntag)
 	 */
 	PFINGSTEN,
-	
+
 	/**
 	 * 50 Tage nach Ostersonntag
 	 */
 	PFINGSTMONTAG,
-	
+
 	/**
 	 * 1. August
 	 */
 	NATIONALFEIERTAG,
-	
+
 	/**
 	 * 25. Dezember
 	 */

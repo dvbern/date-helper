@@ -31,8 +31,6 @@ class Feiertage_CH {
 
 	/**
 	 * constructor
-	 * 
-	 * @param year
 	 */
 	Feiertage_CH(int year) {
 
@@ -44,45 +42,65 @@ class Feiertage_CH {
 		tmp = (GregorianCalendar) eastern.clone();
 		tmp.add(Calendar.DAY_OF_MONTH, -2);
 		feiertage.add(new Feiertag_CH(FeiertagSchweiz.KARFREITAG, tmp
-				.getTimeInMillis()));
+			.getTimeInMillis()));
 
 		tmp = (GregorianCalendar) eastern.clone();
 		feiertage.add(new Feiertag_CH(FeiertagSchweiz.OSTERN, tmp
-				.getTimeInMillis()));
+			.getTimeInMillis()));
 		tmp.add(Calendar.DAY_OF_MONTH, +1);
 		feiertage.add(new Feiertag_CH(FeiertagSchweiz.OSTERMONTAG, tmp
-				.getTimeInMillis()));
+			.getTimeInMillis()));
 
 		tmp = (GregorianCalendar) eastern.clone();
 		tmp.add(Calendar.DAY_OF_MONTH, +39);
 		feiertage.add(new Feiertag_CH(FeiertagSchweiz.AUFFAHRT, tmp
-				.getTimeInMillis()));
+			.getTimeInMillis()));
 
 		tmp = (GregorianCalendar) eastern.clone();
 		tmp.add(Calendar.DAY_OF_MONTH, +49);
 		feiertage.add(new Feiertag_CH(FeiertagSchweiz.PFINGSTEN, tmp
-				.getTimeInMillis()));
+			.getTimeInMillis()));
 		tmp.add(Calendar.DAY_OF_MONTH, +1);
 		feiertage.add(new Feiertag_CH(FeiertagSchweiz.PFINGSTMONTAG, tmp
-				.getTimeInMillis()));
+			.getTimeInMillis()));
 
 		// Fixe Feiertagen
 		feiertage.add(new Feiertag_CH(FeiertagSchweiz.NEUJAHRSTAG,
-				(new GregorianCalendar(year, 0, 1)).getTimeInMillis()));
+			(new GregorianCalendar(year, 0, 1)).getTimeInMillis()));
 		feiertage.add(new Feiertag_CH(FeiertagSchweiz.BECHTOLDSTAG,
-				(new GregorianCalendar(year, 0, 2)).getTimeInMillis()));
+			(new GregorianCalendar(year, 0, 2)).getTimeInMillis()));
 		feiertage.add(new Feiertag_CH(FeiertagSchweiz.NATIONALFEIERTAG,
-				(new GregorianCalendar(year, 7, 1)).getTimeInMillis()));
+			(new GregorianCalendar(year, 7, 1)).getTimeInMillis()));
 		feiertage.add(new Feiertag_CH(FeiertagSchweiz.WEIHNACHTEN,
-				(new GregorianCalendar(year, 11, 25)).getTimeInMillis()));
+			(new GregorianCalendar(year, 11, 25)).getTimeInMillis()));
 		feiertage.add(new Feiertag_CH(FeiertagSchweiz.STEPHANSTAG,
-				(new GregorianCalendar(year, 11, 26)).getTimeInMillis()));
+			(new GregorianCalendar(year, 11, 26)).getTimeInMillis()));
+	}
+
+	/**
+	 * Berechnung Ostersonntag nach Oudin. Source: Das Java Codebook. Dirk
+	 * Louis, Peter M�ller. Addison-Wesley
+	 */
+	private static GregorianCalendar getOudinEastern(int year) {
+
+		int c = year / 100;
+		int n = year - 19 * (year / 19);
+		int k = (c - 17) / 25;
+		int l1 = c - c / 4 - (c - k) / 3 + 19 * n + 15;
+		int l2 = l1 - 30 * (l1 / 30);
+		int l3 = l2 - (l2 / 28)
+			* (1 - (l2 / 28) * (29 / (l2 + 1)) * ((21 - n) / 11));
+		int a1 = year + year / 4 + l3 + 2 - c + c / 4;
+		int a2 = a1 - 7 * (a1 / 7);
+		int l = l3 - a2;
+		int month = 3 + (l + 40) / 44;
+		int day = l + 28 - 31 * (month / 4);
+		return new GregorianCalendar(year, month - 1, day);
 	}
 
 	/**
 	 * Liefert das Feiertag-Objekt zu einem Feiertag
-	 * 
-	 * @param feiertag
+	 *
 	 * @return Feiertag oder null
 	 */
 	Feiertag_CH getFeiertag(FeiertagSchweiz feiertag) {
@@ -97,9 +115,8 @@ class Feiertage_CH {
 
 	/**
 	 * Liefert das Feiertag-Objekt oder null zu einem Datum.
-	 * 
-	 * @param date
-	 *            . Zeit muss auf 0 sein.
+	 *
+	 * @param date . Zeit muss auf 0 sein.
 	 */
 	Feiertag_CH getFeiertag(GregorianCalendar date) {
 
@@ -115,10 +132,8 @@ class Feiertage_CH {
 	/**
 	 * Stellt fest, ob das angegebene Datum auf einen gesetzlichen,
 	 * schweizerischen nationalen Feiertag f�llt
-	 * 
-	 * @param date
-	 *            . Zeit muss auf 0 sein.
-	 * @return
+	 *
+	 * @param date . Zeit muss auf 0 sein.
 	 */
 	boolean isFeiertag(GregorianCalendar date) {
 
@@ -129,30 +144,6 @@ class Feiertage_CH {
 			}
 		}
 		return false;
-	}
-
-	/**
-	 * Berechnung Ostersonntag nach Oudin. Source: Das Java Codebook. Dirk
-	 * Louis, Peter M�ller. Addison-Wesley
-	 * 
-	 * @param year
-	 * @return
-	 */
-	private static GregorianCalendar getOudinEastern(int year) {
-
-		int c = year / 100;
-		int n = year - 19 * (year / 19);
-		int k = (c - 17) / 25;
-		int l1 = c - c / 4 - (c - k) / 3 + 19 * n + 15;
-		int l2 = l1 - 30 * (l1 / 30);
-		int l3 = l2 - (l2 / 28)
-				* (1 - (l2 / 28) * (29 / (l2 + 1)) * ((21 - n) / 11));
-		int a1 = year + year / 4 + l3 + 2 - c + c / 4;
-		int a2 = a1 - 7 * (a1 / 7);
-		int l = l3 - a2;
-		int month = 3 + (l + 40) / 44;
-		int day = l + 28 - 31 * (month / 4);
-		return new GregorianCalendar(year, month - 1, day);
 	}
 
 	@SuppressWarnings("unchecked")

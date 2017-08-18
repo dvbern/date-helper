@@ -55,7 +55,7 @@ public class Zeitraum implements Comparable<Zeitraum>, Serializable {
 		}
 		if (von.after(bis)) {
 			throw new IllegalArgumentException("von (" + von + ") muss gleich oder vor bis (" + bis
-					+ ") sein!");
+				+ ") sein!");
 		}
 		this.von = von;
 		this.bis = bis;
@@ -74,7 +74,6 @@ public class Zeitraum implements Comparable<Zeitraum>, Serializable {
 	public Date getBis() {
 		return bis;
 	}
-
 
 	/**
 	 * @see Comparable#compareTo(Object)
@@ -97,9 +96,8 @@ public class Zeitraum implements Comparable<Zeitraum>, Serializable {
 	/**
 	 * Spaltet den {@link Zeitraum} in mehrere Unter-Zeiträume auf, welche je einen(ganzen oder angebrochenen) Monat
 	 * beinhalten.
-     * <p/>
-     * Für Zeiträume welche genau einem Monat entsprechen oder unter einem Monat sind wird eine leere Liste zurückgegeben.
-     *
+	 * <p/>
+	 * Für Zeiträume welche genau einem Monat entsprechen oder unter einem Monat sind wird eine leere Liste zurückgegeben.
 	 *
 	 * @return ein Array mit dem aufgesplitteten Zeitraum. Leere Liste wenn der Zeitraum kleiner oder gleich einem Monat ist.
 	 */
@@ -131,14 +129,10 @@ public class Zeitraum implements Comparable<Zeitraum>, Serializable {
 	 * <li>Date d2 mit Wert "27.3.2008"
 	 *
 	 * z.split(d1, d2) reultiert in 3 Zeiträume: 1.1.2008 -14.2.2008, 15.2.2008 - 26.3.2008, 27.3.2008 - 31.3.2008
-	 *
-	 * @param splitStartDates
-	 * @return
 	 */
 	protected Collection<Zeitraum> split(Date... splitStartDates) {
 		return split(false, splitStartDates);
 	}
-
 
 	/**
 	 * Spaltet den {@link Zeitraum} in mehrere Unter-Zeiträume auf, je nach übergebenen splitStartDates. Für jedes Datum
@@ -158,8 +152,6 @@ public class Zeitraum implements Comparable<Zeitraum>, Serializable {
 	 *
 	 * @param ignoreBoundaryDates Wenn <code>false</code> werden auch Unterzeiträume für Daten erstellt die gleich dem
 	 * Start oder Ende des aktuellen Zeitraumes sind
-	 * @param splitStartDates
-	 * @return
 	 */
 	protected Collection<Zeitraum> split(boolean ignoreBoundaryDates, Date... splitStartDates) {
 		List<Date> splitStartDatesList = Arrays.asList(splitStartDates);
@@ -186,8 +178,6 @@ public class Zeitraum implements Comparable<Zeitraum>, Serializable {
 
 	/**
 	 * Gibt die Anzahl Tage zurück, welche dieser Zeitraum dauert. Enddatum ist inklusiv.
-	 *
-	 * @return
 	 */
 	public int getDuationInDays() {
 
@@ -209,9 +199,6 @@ public class Zeitraum implements Comparable<Zeitraum>, Serializable {
 
 	/**
 	 * Gibt <code>true</code> zurück wenn mindestens 1 Tag des gegebenen Zeitraumes mit diesem Zeitraum überschneidet.
-	 *
-	 * @param other
-	 * @return
 	 */
 	public boolean intersects(Zeitraum other) {
 
@@ -219,18 +206,13 @@ public class Zeitraum implements Comparable<Zeitraum>, Serializable {
 
 	}
 
-
 	/**
 	 * Gibt an, ob das gegebene Datum innerhalb des Zeitraumes ist, d.h. date >= datumVon && date <= datumBis
-	 *
-	 * @param date
-	 * @return
 	 */
 	public boolean contains(Date date) {
 
 		return !date.before(von) && !date.after(bis);
 	}
-
 
 	/**
 	 * Entfernt alle gegebenen (Unter-)Zeiträume aus diesem Zeitraum.
@@ -245,8 +227,6 @@ public class Zeitraum implements Comparable<Zeitraum>, Serializable {
 	 * </pre></code> Zeitraum Im obigen Beispiel beinhaltet die Liste subtracted 3 Zeiträume: 1.1.2009 - 31.12.2009,
 	 * 1.3.2009 - 30.6.2009 und 1.10.2009 - 31.12.2009.
 	 *
-	 *
-	 * @param unterzeitraeume
 	 * @return eine Liste von übriggebliebenen Zeiträumen.
 	 */
 	public List<Zeitraum> subtract(Zeitraum... unterzeitraeume) {
@@ -293,15 +273,16 @@ public class Zeitraum implements Comparable<Zeitraum>, Serializable {
 		return retVal;
 	}
 
-
 	/**
 	 * Gibt die Differenz in Milisekunden zwischen Start oder Ende dieses Zeitraumes und dem gegebenen Datum wie folgt
 	 * zurück:
 	 * <ul>
 	 * <li>Wenn <tt>date</tt> in diesem Zeitraum enthalten ist wird 0 zurückgegeben
 	 * (siehe {@link #contains(Date)})</li>
-	 * <li>Wenn <tt>date</tt> vor dem Beginn dieses Zeitraumes ist wird date.getTime() - von.getTime() zurückgegeben, der Rückgabewert wird also negativ.</li>
-	 * <li>Wenn <tt>date</tt> nach dem Ende dieses Zeitraumes ist wird date.getTime() - bis.getTime() zurückgegeben, der Rückgabewert wird also positiv.</li>
+	 * <li>Wenn <tt>date</tt> vor dem Beginn dieses Zeitraumes ist wird date.getTime() - von.getTime() zurückgegeben, der Rückgabewert wird
+	 * also negativ.</li>
+	 * <li>Wenn <tt>date</tt> nach dem Ende dieses Zeitraumes ist wird date.getTime() - bis.getTime() zurückgegeben, der Rückgabewert wird also
+	 * positiv.</li>
 	 * </ul>
 	 *
 	 * @param date das zu vergleichende Datum, darf nicht <code>null</code> sein.
@@ -317,7 +298,6 @@ public class Zeitraum implements Comparable<Zeitraum>, Serializable {
 		}
 		return returnValue;
 	}
-
 
 	/**
 	 * Definiert wie ein Zeitraum als String ausgegeben wird:
@@ -352,7 +332,6 @@ public class Zeitraum implements Comparable<Zeitraum>, Serializable {
 		result = prime * result + von.hashCode();
 		return result;
 	}
-
 
 	/**
 	 * {@inheritDoc}

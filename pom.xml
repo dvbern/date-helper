@@ -13,59 +13,57 @@
   ~ limitations under the License.
   -->
 
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	<groupId>ch.dvbern.oss.datehelper</groupId>
-	<artifactId>date-helper</artifactId>
-	<packaging>jar</packaging>
-	<version>1.0.2-SNAPSHOT</version>
-	<name>DV Bern DateHelper Library</name>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>ch.dvbern.oss.datehelper</groupId>
+    <artifactId>date-helper</artifactId>
+    <packaging>jar</packaging>
+    <version>1.0.2-SNAPSHOT</version>
+    <name>DV Bern DateHelper Library</name>
 
-	<description>Helperclasses for date operations and conversions as well as calculation of holidays</description>
+    <description>Helperclasses for date operations and conversions as well as calculation of holidays</description>
 
+    <parent>
+        <groupId>ch.dvbern.oss.maven</groupId>
+        <artifactId>parent</artifactId>
+        <version>1.0.3</version>
+    </parent>
 
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.5</version>
+            <scope>test</scope>
+        </dependency>
+        <!--Fuer nullable annotation-->
+        <dependency>
+            <groupId>com.google.code.findbugs</groupId>
+            <artifactId>annotations</artifactId>
+            <version>2.0.3</version>
+        </dependency>
+    </dependencies>
 
-	<parent>
-		<groupId>ch.dvbern.oss.maven</groupId>
-		<artifactId>parent</artifactId>
-		<version>1.0.3</version>
-	</parent>
+    <issueManagement>
+        <system>github-issues</system>
+        <url>https://github.com/dvbern/lib-datatypes/issues</url>
+    </issueManagement>
 
-	<dependencies>
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>4.5</version>
-			<scope>test</scope>
-		</dependency>
-		<!--Fuer nullable annotation-->
-		<dependency>
-			<groupId>com.google.code.findbugs</groupId>
-			<artifactId>annotations</artifactId>
-			<version>2.0.3</version>
-		</dependency>
-	</dependencies>
+    <developers>
+        <developer>
+            <id>pech</id>
+            <name>Christophe Perret</name>
+            <email>christophe.perret@dvbern.ch</email>
+            <roles>
+                <role>Entwickler</role>
+            </roles>
+        </developer>
+    </developers>
 
-	
-	<issueManagement>
-		<system>github-issues</system>
-		<url>https://github.com/dvbern/lib-datatypes/issues</url>
-	</issueManagement>
+    <scm>
+        <connection>scm:git:https://github.com/dvbern/date-helper</connection>
+    </scm>
 
-	
-	<developers>
-		<developer>
-			<id>pech</id>
-			<name>Christophe Perret</name>
-			<email>christophe.perret@dvbern.ch</email>
-			<roles>
-				<role>Entwickler</role>
-			</roles>
-		</developer>
-	</developers>
-
-	<scm>
-		<connection>scm:git:https://github.com/dvbern/date-helper</connection>
-	</scm>
-	
-</project> 
+</project>
