@@ -19,7 +19,7 @@
 	<groupId>ch.dvbern.oss.lib.dvbern-lib-date</groupId>
 	<artifactId>dvbern-lib-date</artifactId>
 	<packaging>jar</packaging>
-	<version>1.0.0-SNAPSHOT</version>
+	<version>1.0.0</version>
 	<name>dvbern-lib-date</name>
 
 	<description>Hilfklassen für Datumsoperationen und die Berechnung von Feiertagen.
