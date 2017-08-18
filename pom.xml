@@ -16,17 +16,15 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>ch.dvbern.oss.lib.dvbern-lib-date</groupId>
-	<artifactId>dvbern-lib-date</artifactId>
+	<groupId>ch.dvbern.oss.datehelper</groupId>
+	<artifactId>date-helper</artifactId>
 	<packaging>jar</packaging>
-	<version>1.0.0</version>
-	<name>dvbern-lib-date</name>
+	<version>1.0.1-SNAPSHOT</version>
+	<name>DV Bern DateHelper Library</name>
 
-	<description>Hilfklassen für Datumsoperationen und die Berechnung von Feiertagen.
+	<description>Helperclasses for date operations and conversions as well as calculation of holidays</description>
 
-Siehe Javadoc für die Klassen
-- DateHelper und
-- FeiertageHelper</description>
+
 	<url>http://mvn-sites/dvbern-lib-date</url>
 
 	<parent>
@@ -50,21 +48,6 @@ Siehe Javadoc für die Klassen
 		</dependency>
 	</dependencies>
 
-	<reporting>
-		<plugins>
-			<!-- changes.xml -->
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>changes-maven-plugin</artifactId>
-				<version>2.0-beta-1</version>
-			</plugin>
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>changelog-maven-plugin</artifactId>
-				<version>2.0-beta-1</version>
-			</plugin>
-		</plugins>
-	</reporting>
 	
 	<issueManagement>
 		<system>github-issues</system>

@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 DV Bern AG
+ * Copyright 2017. DV Bern AG
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -88,8 +88,9 @@ class Feiertage_CH {
 	Feiertag_CH getFeiertag(FeiertagSchweiz feiertag) {
 
 		for (Feiertag_CH tag : feiertage) {
-			if (tag.getFeiertag().equals(feiertag))
+			if (tag.getFeiertag().equals(feiertag)) {
 				return tag;
+			}
 		}
 		return null;
 	}
@@ -104,8 +105,9 @@ class Feiertage_CH {
 
 		long millis = date.getTimeInMillis();
 		for (Feiertag_CH tag : feiertage) {
-			if (tag.getTime() == millis)
+			if (tag.getTime() == millis) {
 				return tag;
+			}
 		}
 		return null;
 	}

@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 DV Bern AG
+ * Copyright 2017. DV Bern AG
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -43,7 +43,6 @@ public final class FeiertageHelper {
 	 * Wird nicht instanziert.
 	 */
 	private FeiertageHelper() {
-		super();
 	}
 
 	/**
@@ -294,10 +293,12 @@ public final class FeiertageHelper {
 	 */
 	public static Date getPreviousWorkingDate(Date date, int dayCount) {
 
-		if (date == null)
+		if (date == null) {
 			throw new IllegalArgumentException("date is null");
-		if (dayCount < 0)
+		}
+		if (dayCount < 0) {
 			throw new IllegalArgumentException("negative dayCount not allowed");
+		}
 
 		Date result = addDays(date, dayCount * -1);
 		while (isFeiertag_CH(result)) {
@@ -325,10 +326,12 @@ public final class FeiertageHelper {
 	public static Date getPreviousWorkingDate(Date date, int dayCount,
 			List<Date> sperrTagen) {
 
-		if (date == null)
+		if (date == null) {
 			throw new IllegalArgumentException("date is null");
-		if (dayCount < 0)
+		}
+		if (dayCount < 0) {
 			throw new IllegalArgumentException("negative dayCount not allowed");
+		}
 
 		List<Date> sperrTagenClean = cleanList(sperrTagen);
 
@@ -353,13 +356,16 @@ public final class FeiertageHelper {
 	 */
 	public static int getAnzahlArbeitstage(Date datumVon, Date datumBis) {
 
-		if (datumVon == null)
+		if (datumVon == null) {
 			throw new IllegalArgumentException("datumVon ist null");
-		if (datumBis == null)
+		}
+		if (datumBis == null) {
 			throw new IllegalArgumentException("datumBis ist null");
-		if (DateHelper.isDateLess(datumBis, datumVon))
+		}
+		if (DateHelper.isDateLess(datumBis, datumVon)) {
 			throw new IllegalArgumentException(
 					"datumBis ist kleiner als datumVon");
+		}
 
 		int count = 0;
 		Date current = DateHelper.newDateFromDate(datumVon);
@@ -387,13 +393,16 @@ public final class FeiertageHelper {
 	 */
 	public static boolean isFeiertag_CH(int dayOfMonth, int month, int year) {
 
-		if (dayOfMonth < 1 || dayOfMonth > 31)
+		if (dayOfMonth < 1 || dayOfMonth > 31) {
 			throw new IllegalArgumentException(
 					"dateOfMonth not between 1 and 31");
-		if (month < 1 || month > 13)
+		}
+		if (month < 1 || month > 13) {
 			throw new IllegalArgumentException("month not between 1 and 12");
-		if (year < 1500 || year > 9999)
+		}
+		if (year < 1500 || year > 9999) {
 			throw new IllegalArgumentException("year not between 1500 and 9999");
+		}
 
 		GregorianCalendar cal = getCalendar();
 		cal.set(year, month - 1, dayOfMonth);
@@ -415,8 +424,9 @@ public final class FeiertageHelper {
 	 */
 	public static boolean isFeiertag_CH(Date date) {
 
-		if (date == null)
+		if (date == null) {
 			throw new IllegalArgumentException("date is null");
+		}
 
 		GregorianCalendar cal = getCalendar();
 		cal.setTime(date);
@@ -432,8 +442,9 @@ public final class FeiertageHelper {
 	 */
 	public static List<Feiertag_CH> getFeiertage_CH(int year) {
 
-		if (year < 1500 || year > 9999)
+		if (year < 1500 || year > 9999) {
 			throw new IllegalArgumentException("year not between 1500 and 9999");
+		}
 		return getFeiertage(year).getFeiertage();
 	}
 
@@ -447,10 +458,12 @@ public final class FeiertageHelper {
 	 */
 	public static Feiertag_CH getFeiertag_CH(int year, FeiertagSchweiz feiertag) {
 
-		if (year < 1500 || year > 9999)
+		if (year < 1500 || year > 9999) {
 			throw new IllegalArgumentException("year not between 1500 and 9999");
-		if (feiertag == null)
+		}
+		if (feiertag == null) {
 			throw new IllegalArgumentException("feiertag is null");
+		}
 
 		return getFeiertage(year).getFeiertag(feiertag);
 	}
