@@ -25,7 +25,6 @@
 	<description>Helperclasses for date operations and conversions as well as calculation of holidays</description>
 
 
-	<url>http://mvn-sites/dvbern-lib-date</url>
 
 	<parent>
 		<groupId>ch.dvbern.oss.maven</groupId>
