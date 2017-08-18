@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 DV Bern AG
+ * Copyright 2017. DV Bern AG
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -68,40 +68,41 @@ public class FeiertageHelperTest extends TestCase {
 	public static final String AUFFAHRT_2100 = "06.05.2100";
 	public static final String PFINGSTEN_2100 = "16.05.2100";
 	public static final String PFINGSTMONTAG_2100 = "17.05.2100";
+	public static final int TEST_YEAR_1 = 2009;
 
 	public void testFeiertag_CH() {
 
 		// Fixe Feiertagen
-		assertEquals(FeiertageHelper.getFeiertag_CH(2009,
+		assertEquals(FeiertageHelper.getFeiertag_CH(TEST_YEAR_1,
 				FeiertagSchweiz.NEUJAHRSTAG), parseDate(NEUJAHR));
-		assertEquals(FeiertageHelper.getFeiertag_CH(2009,
+		assertEquals(FeiertageHelper.getFeiertag_CH(TEST_YEAR_1,
 				FeiertagSchweiz.BECHTOLDSTAG), parseDate(BECHTOLDSTAG));
-		assertEquals(FeiertageHelper.getFeiertag_CH(2009,
+		assertEquals(FeiertageHelper.getFeiertag_CH(TEST_YEAR_1,
 				FeiertagSchweiz.NATIONALFEIERTAG), parseDate(NATIONALTAG));
-		assertEquals(FeiertageHelper.getFeiertag_CH(2009,
+		assertEquals(FeiertageHelper.getFeiertag_CH(TEST_YEAR_1,
 				FeiertagSchweiz.WEIHNACHTEN), parseDate(WEIHNACHTEN));
-		assertEquals(FeiertageHelper.getFeiertag_CH(2009,
+		assertEquals(FeiertageHelper.getFeiertag_CH(TEST_YEAR_1,
 				FeiertagSchweiz.STEPHANSTAG), parseDate(STEPHANSTAG));
-		assertEquals(FeiertageHelper.getFeiertag_CH(2009,
+		assertEquals(FeiertageHelper.getFeiertag_CH(TEST_YEAR_1,
 				FeiertagSchweiz.NATIONALFEIERTAG), parseDate(NATIONALTAG));
 
 		// Bewegliche Feiertage
-		assertEquals(FeiertageHelper.getFeiertag_CH(2009,
+		assertEquals(FeiertageHelper.getFeiertag_CH(TEST_YEAR_1,
 				FeiertagSchweiz.KARFREITAG), parseDate(KARFREITAG_2009));
-		assertEquals(FeiertageHelper.getFeiertag_CH(2009,
+		assertEquals(FeiertageHelper.getFeiertag_CH(TEST_YEAR_1,
 				FeiertagSchweiz.OSTERN), parseDate(OSTERN_2009));
-		assertEquals(FeiertageHelper.getFeiertag_CH(2009,
+		assertEquals(FeiertageHelper.getFeiertag_CH(TEST_YEAR_1,
 				FeiertagSchweiz.OSTERMONTAG), parseDate(OSTERMONTAG_2009));
-		assertEquals(FeiertageHelper.getFeiertag_CH(2009,
+		assertEquals(FeiertageHelper.getFeiertag_CH(TEST_YEAR_1,
 				FeiertagSchweiz.AUFFAHRT), parseDate(AUFFAHRT_2009));
-		assertEquals(FeiertageHelper.getFeiertag_CH(2009,
+		assertEquals(FeiertageHelper.getFeiertag_CH(TEST_YEAR_1,
 				FeiertagSchweiz.PFINGSTEN), parseDate(PFINGSTEN_2009));
-		assertEquals(FeiertageHelper.getFeiertag_CH(2009,
+		assertEquals(FeiertageHelper.getFeiertag_CH(TEST_YEAR_1,
 				FeiertagSchweiz.PFINGSTMONTAG), parseDate(PFINGSTMONTAG_2009));
 
 		try {
 			assertNull("IllegalArgumentException wanted", FeiertageHelper
-					.getFeiertag_CH(2009, null));
+					.getFeiertag_CH(TEST_YEAR_1, null));
 		} catch (IllegalArgumentException e) {
 		}
 	}
@@ -191,7 +192,7 @@ public class FeiertageHelperTest extends TestCase {
 
 		// Datum mit Time gesetzt
 		Calendar cal = Calendar.getInstance();
-		cal.set(2009, 0, 1);
+		cal.set(TEST_YEAR_1, 0, 1);
 		assertTrue("NEUJAHR " + "01.01.2009" + " ist ein Feiertag",
 				FeiertageHelper.isFeiertag_CH(cal.getTime()));
 
@@ -204,13 +205,13 @@ public class FeiertageHelperTest extends TestCase {
 
 		try {
 			assertNull("IllegalArgumentException wanted", FeiertageHelper
-					.isFeiertag_CH(0, 12, 2009));
+					.isFeiertag_CH(0, 12, TEST_YEAR_1));
 		} catch (IllegalArgumentException e) {
 		}
 
 		try {
 			assertNull("IllegalArgumentException wanted", FeiertageHelper
-					.isFeiertag_CH(1, 0, 2009));
+					.isFeiertag_CH(1, 0, TEST_YEAR_1));
 		} catch (IllegalArgumentException e) {
 		}
 
@@ -222,7 +223,7 @@ public class FeiertageHelperTest extends TestCase {
 
 		try {
 			assertNull("IllegalArgumentException wanted", FeiertageHelper
-					.isFeiertag_CH(-1, -1, -2009));
+					.isFeiertag_CH(-1, -1, -TEST_YEAR_1));
 		} catch (IllegalArgumentException e) {
 		}
 	}
@@ -539,9 +540,9 @@ public class FeiertageHelperTest extends TestCase {
 
 	public void testPrintOutFeiertage() {
 
-		assertTrue("Keine Feiertage vorhanden", FeiertageHelper
-				.getFeiertage_CH(2009).size() > 0);
-		for (Feiertag_CH f : FeiertageHelper.getFeiertage_CH(2009)) {
+		assertTrue("Keine Feiertage vorhanden", !FeiertageHelper
+				.getFeiertage_CH(TEST_YEAR_1).isEmpty());
+		for (Feiertag_CH f : FeiertageHelper.getFeiertage_CH(TEST_YEAR_1)) {
 			assertNotNull(f);
 			System.out.println(f.getFeiertag() + ": " + getFormattedString(f));
 		}

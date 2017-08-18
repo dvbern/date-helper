@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 DV Bern AG
+ * Copyright 2017. DV Bern AG
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -77,8 +77,9 @@ public class Zeitraum implements Comparable<Zeitraum>, Serializable {
 
 
 	/**
-	 * @see java.lang.Comparable#compareTo(java.lang.Object)
+	 * @see Comparable#compareTo(Object)
 	 */
+	@Override
 	public int compareTo(Zeitraum zeitraum) {
 
 		if (zeitraum == null) {
@@ -264,7 +265,7 @@ public class Zeitraum implements Comparable<Zeitraum>, Serializable {
 			List<Zeitraum> splitted = (List<Zeitraum>) left.split(true, uz.getVon(), uz.getBis());
 
 			if (!uz.getVon().after(left.getVon())) {
-				if (splitted.size() > 0) {
+				if (!splitted.isEmpty()) {
 					Zeitraum lastSplitted = splitted.get(splitted.size() - 1);
 					left = new Zeitraum(DateHelper.addDays(lastSplitted.getVon(), 1), lastSplitted.getBis());
 				} else if (splitted.isEmpty()) {
@@ -298,7 +299,7 @@ public class Zeitraum implements Comparable<Zeitraum>, Serializable {
 	 * zurück:
 	 * <ul>
 	 * <li>Wenn <tt>date</tt> in diesem Zeitraum enthalten ist wird 0 zurückgegeben
-	 * (siehe {@link #contains(java.util.Date)})</li>
+	 * (siehe {@link #contains(Date)})</li>
 	 * <li>Wenn <tt>date</tt> vor dem Beginn dieses Zeitraumes ist wird date.getTime() - von.getTime() zurückgegeben, der Rückgabewert wird also negativ.</li>
 	 * <li>Wenn <tt>date</tt> nach dem Ende dieses Zeitraumes ist wird date.getTime() - bis.getTime() zurückgegeben, der Rückgabewert wird also positiv.</li>
 	 * </ul>

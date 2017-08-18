@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 DV Bern AG
+ * Copyright 2017. DV Bern AG
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,10 +15,16 @@
 
 package ch.dvbern.lib.date;
 
+import java.sql.Timestamp;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+import java.util.Date;
+
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-import java.time.*;
-import java.util.Date;
 
 /**
  * Utilities for conversion between the old and new JDK date types
@@ -70,8 +76,8 @@ public class DateConvertUtils {
 	        return null;
         }
 
-        if (date instanceof java.sql.Timestamp) {
-	        return ((java.sql.Timestamp) date).toLocalDateTime();
+        if (date instanceof Timestamp) {
+	        return ((Timestamp) date).toLocalDateTime();
         } else {
 	        return Instant.ofEpochMilli(date.getTime()).atZone(zone).toLocalDateTime();
         }
@@ -89,7 +95,7 @@ public class DateConvertUtils {
      * Creates a {@link Date} from various date objects. Is null-safe. Currently supports:<ul>
      * <li>{@link Date}
      * <li>{@link java.sql.Date}
-     * <li>{@link java.sql.Timestamp}
+     * <li>{@link Timestamp}
      * <li>{@link LocalDate}
      * <li>{@link LocalDateTime}
      * <li>{@link ZonedDateTime}
@@ -106,7 +112,7 @@ public class DateConvertUtils {
 	        return null;
         }
 
-        if (date instanceof java.sql.Date || date instanceof java.sql.Timestamp) {
+        if (date instanceof java.sql.Date || date instanceof Timestamp) {
 	        return new Date(((Date) date).getTime());
         }
         if (date instanceof Date) {
