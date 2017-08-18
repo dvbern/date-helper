@@ -39,8 +39,6 @@ public class ZeitraumTest {
 
 	private final DateFormat df = new SimpleDateFormat("dd.MM.yyyy");
 
-
-
 	@Test
 	public void testMonthSplit() throws ParseException {
 
@@ -78,14 +76,14 @@ public class ZeitraumTest {
 		splittedByMonth = zeitraum.splitByMonth();
 		assertEquals(3, splittedByMonth.size());
 
-        // Zeiträume <= 1 Monat: Leere Liste wird zurückgegeben.
-        zeitraum = new Zeitraum(df.parse("1.7.2010"), df.parse("1.7.2010"));
+		// Zeiträume <= 1 Monat: Leere Liste wird zurückgegeben.
+		zeitraum = new Zeitraum(df.parse("1.7.2010"), df.parse("1.7.2010"));
 		splittedByMonth = zeitraum.splitByMonth();
 		assertTrue(splittedByMonth.isEmpty());
-        zeitraum = new Zeitraum(df.parse("1.7.2010"), df.parse("31.7.2010"));
+		zeitraum = new Zeitraum(df.parse("1.7.2010"), df.parse("31.7.2010"));
 		splittedByMonth = zeitraum.splitByMonth();
 		assertTrue(splittedByMonth.isEmpty());
-        zeitraum = new Zeitraum(df.parse("15.7.2010"), df.parse("20.7.2010"));
+		zeitraum = new Zeitraum(df.parse("15.7.2010"), df.parse("20.7.2010"));
 		splittedByMonth = zeitraum.splitByMonth();
 		assertTrue(splittedByMonth.isEmpty());
 	}
@@ -100,7 +98,6 @@ public class ZeitraumTest {
 		assertFalse(zeitraum.contains(bis));
 	}
 
-
 	/**
 	 *
 	 */
@@ -110,17 +107,17 @@ public class ZeitraumTest {
 		Zeitraum zr = new Zeitraum(DateHelper.newDate(1, 1, 2008), DateHelper.newDate(31, 3, 2008));
 		assertEquals(1, zr.subtract(
 
-				new Zeitraum(DateHelper.newDate(5, 1, 2008), DateHelper.newDate(31, 1, 2008)),
-				new Zeitraum(DateHelper.newDate(1, 2, 2008), DateHelper.newDate(29, 2, 2008)),
-				new Zeitraum(DateHelper.newDate(1, 3, 2008), DateHelper.newDate(31, 3, 2008))
+			new Zeitraum(DateHelper.newDate(5, 1, 2008), DateHelper.newDate(31, 1, 2008)),
+			new Zeitraum(DateHelper.newDate(1, 2, 2008), DateHelper.newDate(29, 2, 2008)),
+			new Zeitraum(DateHelper.newDate(1, 3, 2008), DateHelper.newDate(31, 3, 2008))
 
 		).size());
 
 		zr = new Zeitraum(DateHelper.newDate(1, 1, 2008), DateHelper.newDate(31, 12, 2008));
-		assertEquals(0 ,zr.subtract(new Zeitraum(DateHelper.newDate(1, 1, 2007),
-				DateHelper.newDate(31, 12, 2009))).size());
+		assertEquals(0, zr.subtract(new Zeitraum(DateHelper.newDate(1, 1, 2007),
+			DateHelper.newDate(31, 12, 2009))).size());
 		List<Zeitraum> splitted = zr
-				.subtract(new Zeitraum(DateHelper.newDate(1, 1, 2007), DateHelper.newDate(30, 6, 2008)));
+			.subtract(new Zeitraum(DateHelper.newDate(1, 1, 2007), DateHelper.newDate(30, 6, 2008)));
 		assertEquals(1, splitted.size());
 		assertEquals(DateHelper.newDate(1, 7, 2008), splitted.get(0).getVon());
 		assertEquals(DateHelper.newDate(31, 12, 2008), splitted.get(0).getBis());
@@ -132,7 +129,7 @@ public class ZeitraumTest {
 		assertEquals(DateHelper.newDate(30, 6, 2008), splitted.get(0).getBis());
 
 		splitted = zr.subtract(new Zeitraum(DateHelper.newDate(1, 2, 2008), DateHelper.newDate(29, 2, 2008)), new Zeitraum(
-				DateHelper.newDate(1, 7, 2008), DateHelper.newDate(1, 7, 2009)));
+			DateHelper.newDate(1, 7, 2008), DateHelper.newDate(1, 7, 2009)));
 		assertEquals(2, splitted.size());
 
 		assertEquals(DateHelper.newDate(1, 1, 2008), splitted.get(0).getVon());
@@ -141,14 +138,14 @@ public class ZeitraumTest {
 		assertEquals(DateHelper.newDate(30, 6, 2008), splitted.get(1).getBis());
 
 		splitted = zr.subtract(new Zeitraum(DateHelper.newDate(1, 2, 2007), DateHelper.newDate(29, 2, 2008)), new Zeitraum(
-				DateHelper.newDate(1, 4, 2008), DateHelper.newDate(1, 7, 2009)));
+			DateHelper.newDate(1, 4, 2008), DateHelper.newDate(1, 7, 2009)));
 		assertEquals(1, splitted.size());
 
 		assertEquals(DateHelper.newDate(1, 3, 2008), splitted.get(0).getVon());
 		assertEquals(DateHelper.newDate(31, 3, 2008), splitted.get(0).getBis());
 
 		splitted = zr.subtract(new Zeitraum(DateHelper.newDate(1, 2, 2008), DateHelper.newDate(29, 2, 2008)), new Zeitraum(
-				DateHelper.newDate(1, 4, 2008), DateHelper.newDate(1, 7, 2008)));
+			DateHelper.newDate(1, 4, 2008), DateHelper.newDate(1, 7, 2008)));
 		assertEquals(3, splitted.size());
 		assertEquals(DateHelper.newDate(1, 1, 2008), splitted.get(0).getVon());
 		assertEquals(DateHelper.newDate(31, 1, 2008), splitted.get(0).getBis());
@@ -161,11 +158,11 @@ public class ZeitraumTest {
 
 		zr = new Zeitraum(DateHelper.newDate(24, 6, 2008), DateHelper.newDate(19, 6, 2009));
 		splitted = zr.subtract(new Zeitraum(DateHelper.newDate(1, 1, 2009), DateHelper.newDate(31, 3, 2009)), new Zeitraum(
-				DateHelper.newDate(1, 4, 2009), DateHelper.newDate(30, 4, 2009)), new Zeitraum(
-				DateHelper.newDate(1, 4, 2009), DateHelper.newDate(30, 4, 2009)), new Zeitraum(
-				DateHelper.newDate(1, 5, 2009), DateHelper.newDate(31, 5, 2009)), new Zeitraum(
-				DateHelper.newDate(1, 8, 2009), DateHelper.newDate(31, 8, 2009)));
-		assertEquals(2,splitted.size());
+			DateHelper.newDate(1, 4, 2009), DateHelper.newDate(30, 4, 2009)), new Zeitraum(
+			DateHelper.newDate(1, 4, 2009), DateHelper.newDate(30, 4, 2009)), new Zeitraum(
+			DateHelper.newDate(1, 5, 2009), DateHelper.newDate(31, 5, 2009)), new Zeitraum(
+			DateHelper.newDate(1, 8, 2009), DateHelper.newDate(31, 8, 2009)));
+		assertEquals(2, splitted.size());
 
 		assertEquals(DateHelper.newDate(24, 6, 2008), splitted.get(0).getVon());
 		assertEquals(DateHelper.newDate(31, 12, 2008), splitted.get(0).getBis());
@@ -173,9 +170,8 @@ public class ZeitraumTest {
 		assertEquals(DateHelper.newDate(1, 6, 2009), splitted.get(1).getVon());
 		assertEquals(DateHelper.newDate(19, 6, 2009), splitted.get(1).getBis());
 
-
 		zr = new Zeitraum(DateHelper.newDate(1, 1, 2009), DateHelper.newDate(31, 12, 2010));
-		splitted = zr.subtract(new Zeitraum(DateHelper.newDate(5, 8,  2009), DateHelper.newDate(5, 8,  2009)));
+		splitted = zr.subtract(new Zeitraum(DateHelper.newDate(5, 8, 2009), DateHelper.newDate(5, 8, 2009)));
 		assertEquals(2, splitted.size());
 
 		assertEquals(DateHelper.newDate(1, 1, 2009), splitted.get(0).getVon());
@@ -184,10 +180,7 @@ public class ZeitraumTest {
 		assertEquals(DateHelper.newDate(6, 8, 2009), splitted.get(1).getVon());
 		assertEquals(DateHelper.newDate(31, 12, 2010), splitted.get(1).getBis());
 
-
 	}
-
-
 
 	/**
 	 * @throws ParseException
@@ -260,48 +253,43 @@ public class ZeitraumTest {
 		assertEquals(1, z.getDuationInDays());
 	}
 
-
 	@Test
 	public void testSplit() {
 
-
-
-		Zeitraum z = new Zeitraum(DateHelper.newDate(1, 1, 2008), DateHelper.newDate(31, 3, 2008)) ;
+		Zeitraum z = new Zeitraum(DateHelper.newDate(1, 1, 2008), DateHelper.newDate(31, 3, 2008));
 		List<Zeitraum> splittedZeitraeume = new ArrayList<Zeitraum>(z.split(DateHelper.newDate(1, 2, 2008), DateHelper
-				.newDate(1, 3, 2008)));
+			.newDate(1, 3, 2008)));
 		assertEquals(3, splittedZeitraeume.size());
 
 		assertThat(splittedZeitraeume.get(0), equalTo(new Zeitraum(DateHelper.newDate(1, 1, 2008), DateHelper.newDate(31,
-				1, 2008))));
+			1, 2008))));
 		assertThat(splittedZeitraeume.get(1), equalTo(new Zeitraum(DateHelper.newDate(1, 2, 2008), DateHelper.newDate(29,
-				2, 2008))));
+			2, 2008))));
 		assertThat(splittedZeitraeume.get(2), equalTo(new Zeitraum(DateHelper.newDate(1, 3, 2008), DateHelper.newDate(31,
-				3, 2008))));
+			3, 2008))));
 
 		splittedZeitraeume = new ArrayList<Zeitraum>(z.split(DateHelper.newDate(1, 1, 2008),
-				DateHelper.newDate(1, 3, 2007), DateHelper.newDate(1, 2, 2009), DateHelper.newDate(31, 3, 2008)));
+			DateHelper.newDate(1, 3, 2007), DateHelper.newDate(1, 2, 2009), DateHelper.newDate(31, 3, 2008)));
 		assertEquals(3, splittedZeitraeume.size());
 		assertThat(splittedZeitraeume.get(0), equalTo(new Zeitraum(DateHelper.newDate(1, 1, 2008), DateHelper.newDate(1,
-				1, 2008))));
+			1, 2008))));
 		assertThat(splittedZeitraeume.get(1), equalTo(new Zeitraum(DateHelper.newDate(1, 1, 2008), DateHelper.newDate(30,
-				3, 2008))));
+			3, 2008))));
 		assertThat(splittedZeitraeume.get(2), equalTo(new Zeitraum(DateHelper.newDate(31, 3, 2008), DateHelper.newDate(31,
-				3, 2008))));
+			3, 2008))));
 	}
-
-
 
 	@Test
 	public void testEquals() {
 		Zeitraum z1 = new Zeitraum(DateHelper.newDate(1, 1, 2008), DateHelper.newDate(31,
-				1, 2008));
+			1, 2008));
 		Zeitraum z2 = z1;
 		assertTrue(z1.equals(z2));
 		z2 = new Zeitraum(DateHelper.newDate(1, 1, 2008), DateHelper.newDate(31,
-				1, 2008));
+			1, 2008));
 		assertTrue(z1.equals(z2));
 		z2 = new Zeitraum(DateHelper.newDate(2, 1, 2008), DateHelper.newDate(31,
-				1, 2008));
+			1, 2008));
 		assertFalse(z1.equals(z2));
 		assertFalse(z1.equals(null));
 		assertFalse(z1.equals("Ich bin kein Zeitraum"));
@@ -310,18 +298,16 @@ public class ZeitraumTest {
 	@Test
 	public void testToString() {
 		Zeitraum sameYear = new Zeitraum(DateHelper.newDate(1, 1, 2008), DateHelper.newDate(31,
-				1, 2008));
+			1, 2008));
 		assertEquals("01.01. - 31.01.2008", sameYear.toString());
-		Zeitraum threeYears = new Zeitraum(DateHelper.newDate(1,1,2000), DateHelper.newDate(31, 12, 2002));
+		Zeitraum threeYears = new Zeitraum(DateHelper.newDate(1, 1, 2000), DateHelper.newDate(31, 12, 2002));
 		assertEquals("01.01.2000 - 31.12.2002", threeYears.toString());
 	}
-
-
 
 	@Test
 	public void testGetDistanceFrom() {
 		Zeitraum z1 = new Zeitraum(DateHelper.newDate(1, 1, 2008), DateHelper.newDate(31,
-				1, 2008));
+			1, 2008));
 		Date d = DateHelper.newDate(31, 12, 2007);
 		assertEquals(-86400000, z1.getDistanceFrom(d));
 		d = DateHelper.newDate(1, 2, 2008);
@@ -333,8 +319,5 @@ public class ZeitraumTest {
 		d = DateHelper.newDate(15, 1, 2008);
 		assertEquals(0, z1.getDistanceFrom(d));
 	}
-
-
-
 
 }
