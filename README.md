@@ -12,7 +12,7 @@ This library provides helper classes for date operations and the calculation of 
 
 ```xml
 <dependency>
-	<groupId>ch.dvbern.oss.date-helper</groupId>
+	<groupId>ch.dvbern.oss.datehelper</groupId>
 	<artifactId>date-helper</artifactId>
 	<version>(NEWEST_VERSION)</version>
 </dependency>
