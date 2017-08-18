@@ -18,7 +18,7 @@
     <groupId>ch.dvbern.oss.datehelper</groupId>
     <artifactId>date-helper</artifactId>
     <packaging>jar</packaging>
-    <version>1.0.3-SNAPSHOT</version>
+    <version>1.0.2</version>
     <name>DV Bern DateHelper Library</name>
 
     <description>Helperclasses for date operations and conversions as well as calculation of holidays</description>
