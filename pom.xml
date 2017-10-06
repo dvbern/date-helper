@@ -59,6 +59,14 @@
             </roles>
         </developer>
     </developers>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-pmd-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
 
     <scm>
         <connection>scm:git:https://github.com/dvbern/date-helper</connection>

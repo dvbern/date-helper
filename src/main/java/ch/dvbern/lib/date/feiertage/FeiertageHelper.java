@@ -36,6 +36,8 @@ import ch.dvbern.lib.date.DateHelper;
  */
 public final class FeiertageHelper {
 
+	public static final String DATE_IS_NULL_MSG = "date is null";
+	public static final String NEGATIVE_DAY_COUNT_NOT_ALLOWED_MSG = "negative dayCount not allowed";
 	private static Map<Integer, Feiertage_CH> feiertageMap = new HashMap<Integer, Feiertage_CH>();
 
 	/**
@@ -57,10 +59,10 @@ public final class FeiertageHelper {
 	public static Date getNextWorkingDate(Date date, int dayCount) {
 
 		if (date == null) {
-			throw new IllegalArgumentException("date is null");
+			throw new IllegalArgumentException(DATE_IS_NULL_MSG);
 		}
 		if (dayCount < 0) {
-			throw new IllegalArgumentException("negative dayCount not allowed");
+			throw new IllegalArgumentException(NEGATIVE_DAY_COUNT_NOT_ALLOWED_MSG);
 		}
 
 		Date result = addDays(date, dayCount);
@@ -87,10 +89,10 @@ public final class FeiertageHelper {
 		List<? extends Date> sperrTagen) {
 
 		if (date == null) {
-			throw new IllegalArgumentException("date is null");
+			throw new IllegalArgumentException(DATE_IS_NULL_MSG);
 		}
 		if (dayCount < 0) {
-			throw new IllegalArgumentException("negative dayCount not allowed");
+			throw new IllegalArgumentException(NEGATIVE_DAY_COUNT_NOT_ALLOWED_MSG);
 		}
 
 		List<Date> sperrTagenClean = cleanList(sperrTagen);
@@ -227,10 +229,10 @@ public final class FeiertageHelper {
 	public static Date addWorkingDays(Date date, boolean jumpToWorkingDay,
 		int dayCount, List<? extends Date> sperrTage) {
 		if (date == null) {
-			throw new IllegalArgumentException("date is null");
+			throw new IllegalArgumentException(DATE_IS_NULL_MSG);
 		}
 		if (dayCount < 0) {
-			throw new IllegalArgumentException("negative dayCount not allowed");
+			throw new IllegalArgumentException(NEGATIVE_DAY_COUNT_NOT_ALLOWED_MSG);
 		}
 		if (sperrTage == null) {
 			throw new IllegalArgumentException("sperrTage is null");
@@ -273,10 +275,10 @@ public final class FeiertageHelper {
 	public static Date getPreviousWorkingDate(Date date, int dayCount) {
 
 		if (date == null) {
-			throw new IllegalArgumentException("date is null");
+			throw new IllegalArgumentException(DATE_IS_NULL_MSG);
 		}
 		if (dayCount < 0) {
-			throw new IllegalArgumentException("negative dayCount not allowed");
+			throw new IllegalArgumentException(NEGATIVE_DAY_COUNT_NOT_ALLOWED_MSG);
 		}
 
 		Date result = addDays(date, dayCount * -1);
@@ -303,10 +305,10 @@ public final class FeiertageHelper {
 		List<Date> sperrTagen) {
 
 		if (date == null) {
-			throw new IllegalArgumentException("date is null");
+			throw new IllegalArgumentException(DATE_IS_NULL_MSG);
 		}
 		if (dayCount < 0) {
-			throw new IllegalArgumentException("negative dayCount not allowed");
+			throw new IllegalArgumentException(NEGATIVE_DAY_COUNT_NOT_ALLOWED_MSG);
 		}
 
 		List<Date> sperrTagenClean = cleanList(sperrTagen);
@@ -395,7 +397,7 @@ public final class FeiertageHelper {
 	public static boolean isFeiertag_CH(Date date) {
 
 		if (date == null) {
-			throw new IllegalArgumentException("date is null");
+			throw new IllegalArgumentException(DATE_IS_NULL_MSG);
 		}
 
 		GregorianCalendar cal = getCalendar();
