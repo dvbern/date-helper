@@ -15,10 +15,10 @@
 
 package ch.dvbern.lib.date.feiertage;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.List;
-import java.util.Vector;
 
 /**
  * Feiertage Schweiz pro Jahr. Berechnet Feiertage eines Jahres und speichert
@@ -27,7 +27,7 @@ import java.util.Vector;
  */
 class Feiertage_CH {
 
-	private final Vector<Feiertag_CH> feiertage = new Vector<Feiertag_CH>(10);
+	private final List<Feiertag_CH> feiertage = new ArrayList<>(10);
 
 	/**
 	 * constructor
@@ -149,6 +149,6 @@ class Feiertage_CH {
 	@SuppressWarnings("unchecked")
 	List<Feiertag_CH> getFeiertage() {
 
-		return (List<Feiertag_CH>) feiertage.clone();
+		return  new ArrayList<>(feiertage);
 	}
 }
