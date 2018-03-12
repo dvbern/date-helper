@@ -890,11 +890,10 @@ public final class DateHelper {
 		}
 
 		// Falls die Monate gleich sind: Dasselbe mit dem Tag
-		if (monthStichdatum == monthDOB) {
-			if (dayStichdatum < dayDOB) {
-				age = age - 1;
-			}
+		if (monthStichdatum == monthDOB && dayStichdatum < dayDOB) {
+			age = age - 1;
 		}
+
 		return age;
 	}
 

@@ -18,7 +18,7 @@
     <groupId>ch.dvbern.oss.datehelper</groupId>
     <artifactId>date-helper</artifactId>
     <packaging>jar</packaging>
-    <version>1.0.3-SNAPSHOT</version>
+    <version>1.0.5-SNAPSHOT</version>
     <name>DV Bern DateHelper Library</name>
 
     <description>Helperclasses for date operations and conversions as well as calculation of holidays</description>
@@ -59,6 +59,14 @@
             </roles>
         </developer>
     </developers>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-pmd-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
 
     <scm>
         <connection>scm:git:https://github.com/dvbern/date-helper</connection>
