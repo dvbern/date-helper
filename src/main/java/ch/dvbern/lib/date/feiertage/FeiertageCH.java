@@ -25,14 +25,14 @@ import java.util.List;
  * die gewonnenen Informationen in einer Vector-Collection von
  * Feiertag-Objekten.
  */
-class Feiertage_CH {
+class FeiertageCH {
 
-	private final List<Feiertag_CH> feiertage = new ArrayList<>(10);
+	private final List<FeiertagCH> feiertage = new ArrayList<>(10);
 
 	/**
 	 * constructor
 	 */
-	Feiertage_CH(int year) {
+	FeiertageCH(int year) {
 
 		// Bewegliche Feiertagen
 		// Ostern (sonntag) vorab berechnen
@@ -41,39 +41,39 @@ class Feiertage_CH {
 
 		tmp = (GregorianCalendar) eastern.clone();
 		tmp.add(Calendar.DAY_OF_MONTH, -2);
-		feiertage.add(new Feiertag_CH(FeiertagSchweiz.KARFREITAG, tmp
+		feiertage.add(new FeiertagCH(FeiertagSchweiz.KARFREITAG, tmp
 			.getTimeInMillis()));
 
 		tmp = (GregorianCalendar) eastern.clone();
-		feiertage.add(new Feiertag_CH(FeiertagSchweiz.OSTERN, tmp
+		feiertage.add(new FeiertagCH(FeiertagSchweiz.OSTERN, tmp
 			.getTimeInMillis()));
 		tmp.add(Calendar.DAY_OF_MONTH, +1);
-		feiertage.add(new Feiertag_CH(FeiertagSchweiz.OSTERMONTAG, tmp
+		feiertage.add(new FeiertagCH(FeiertagSchweiz.OSTERMONTAG, tmp
 			.getTimeInMillis()));
 
 		tmp = (GregorianCalendar) eastern.clone();
 		tmp.add(Calendar.DAY_OF_MONTH, +39);
-		feiertage.add(new Feiertag_CH(FeiertagSchweiz.AUFFAHRT, tmp
+		feiertage.add(new FeiertagCH(FeiertagSchweiz.AUFFAHRT, tmp
 			.getTimeInMillis()));
 
 		tmp = (GregorianCalendar) eastern.clone();
 		tmp.add(Calendar.DAY_OF_MONTH, +49);
-		feiertage.add(new Feiertag_CH(FeiertagSchweiz.PFINGSTEN, tmp
+		feiertage.add(new FeiertagCH(FeiertagSchweiz.PFINGSTEN, tmp
 			.getTimeInMillis()));
 		tmp.add(Calendar.DAY_OF_MONTH, +1);
-		feiertage.add(new Feiertag_CH(FeiertagSchweiz.PFINGSTMONTAG, tmp
+		feiertage.add(new FeiertagCH(FeiertagSchweiz.PFINGSTMONTAG, tmp
 			.getTimeInMillis()));
 
 		// Fixe Feiertagen
-		feiertage.add(new Feiertag_CH(FeiertagSchweiz.NEUJAHRSTAG,
+		feiertage.add(new FeiertagCH(FeiertagSchweiz.NEUJAHRSTAG,
 			(new GregorianCalendar(year, 0, 1)).getTimeInMillis()));
-		feiertage.add(new Feiertag_CH(FeiertagSchweiz.BECHTOLDSTAG,
+		feiertage.add(new FeiertagCH(FeiertagSchweiz.BECHTOLDSTAG,
 			(new GregorianCalendar(year, 0, 2)).getTimeInMillis()));
-		feiertage.add(new Feiertag_CH(FeiertagSchweiz.NATIONALFEIERTAG,
+		feiertage.add(new FeiertagCH(FeiertagSchweiz.NATIONALFEIERTAG,
 			(new GregorianCalendar(year, 7, 1)).getTimeInMillis()));
-		feiertage.add(new Feiertag_CH(FeiertagSchweiz.WEIHNACHTEN,
+		feiertage.add(new FeiertagCH(FeiertagSchweiz.WEIHNACHTEN,
 			(new GregorianCalendar(year, 11, 25)).getTimeInMillis()));
-		feiertage.add(new Feiertag_CH(FeiertagSchweiz.STEPHANSTAG,
+		feiertage.add(new FeiertagCH(FeiertagSchweiz.STEPHANSTAG,
 			(new GregorianCalendar(year, 11, 26)).getTimeInMillis()));
 	}
 
@@ -103,9 +103,9 @@ class Feiertage_CH {
 	 *
 	 * @return Feiertag oder null
 	 */
-	Feiertag_CH getFeiertag(FeiertagSchweiz feiertag) {
+	FeiertagCH getFeiertag(FeiertagSchweiz feiertag) {
 
-		for (Feiertag_CH tag : feiertage) {
+		for (FeiertagCH tag : feiertage) {
 			if (tag.getFeiertag().equals(feiertag)) {
 				return tag;
 			}
@@ -118,10 +118,10 @@ class Feiertage_CH {
 	 *
 	 * @param date . Zeit muss auf 0 sein.
 	 */
-	Feiertag_CH getFeiertag(GregorianCalendar date) {
+	FeiertagCH getFeiertag(GregorianCalendar date) {
 
 		long millis = date.getTimeInMillis();
-		for (Feiertag_CH tag : feiertage) {
+		for (FeiertagCH tag : feiertage) {
 			if (tag.getTime() == millis) {
 				return tag;
 			}
@@ -138,7 +138,7 @@ class Feiertage_CH {
 	boolean isFeiertag(GregorianCalendar date) {
 
 		long millis = date.getTimeInMillis();
-		for (Feiertag_CH tag : feiertage) {
+		for (FeiertagCH tag : feiertage) {
 			if (tag.getTime() == millis) {
 				return true;
 			}
@@ -147,7 +147,7 @@ class Feiertage_CH {
 	}
 
 	@SuppressWarnings("unchecked")
-	List<Feiertag_CH> getFeiertage() {
+	List<FeiertagCH> getFeiertage() {
 
 		return  new ArrayList<>(feiertage);
 	}
