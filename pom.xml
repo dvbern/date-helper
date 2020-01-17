@@ -15,19 +15,21 @@
 
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>ch.dvbern.oss.datehelper</groupId>
-    <artifactId>date-helper</artifactId>
-    <packaging>jar</packaging>
-    <version>1.0.4</version>
-    <name>DV Bern DateHelper Library</name>
-
-    <description>Helperclasses for date operations and conversions as well as calculation of holidays</description>
 
     <parent>
         <groupId>ch.dvbern.oss.maven</groupId>
         <artifactId>parent</artifactId>
-        <version>1.0.3</version>
+        <version>1.0.6</version>
     </parent>
+
+    <groupId>ch.dvbern.oss.datehelper</groupId>
+    <artifactId>date-helper</artifactId>
+    <packaging>jar</packaging>
+    <version>1.0.5</version>
+
+    <name>DV Bern DateHelper Library</name>
+    <description>Helperclasses for date operations and conversions as well as calculation of holidays</description>
+    <url>http://github.com/dvbern/date-helper</url>
 
     <dependencies>
         <dependency>
@@ -59,6 +61,13 @@
             </roles>
         </developer>
     </developers>
+
+    <scm>
+        <connection>scm:git:git://github.com/dvbern/date-helper.git</connection>
+        <developerConnection>scm:git:ssh://github.com:dvbern/date-helper.git</developerConnection>
+        <url>http://github.com/dvbern/date-helper/tree/master</url>
+    </scm>
+
     <build>
         <plugins>
             <plugin>
@@ -67,9 +76,5 @@
             </plugin>
         </plugins>
     </build>
-
-    <scm>
-        <connection>scm:git:https://github.com/dvbern/date-helper</connection>
-    </scm>
 
 </project>
