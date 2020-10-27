@@ -553,7 +553,7 @@ public class FeiertageHelperTest extends TestCase {
 
 		assertTrue("Keine Feiertage vorhanden", !FeiertageHelper
 			.getFeiertage_CH(TEST_YEAR_1).isEmpty());
-		for (Feiertag_CH f : FeiertageHelper.getFeiertage_CH(TEST_YEAR_1)) {
+		for (FeiertagCH f : FeiertageHelper.getFeiertage_CH(TEST_YEAR_1)) {
 			assertNotNull(f);
 			System.out.println(f.getFeiertag() + ": " + getFormattedString(f));
 		}

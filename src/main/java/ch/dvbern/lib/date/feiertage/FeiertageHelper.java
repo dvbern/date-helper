@@ -38,7 +38,7 @@ public final class FeiertageHelper {
 
 	public static final String DATE_IS_NULL_MSG = "date is null";
 	public static final String NEGATIVE_DAY_COUNT_NOT_ALLOWED_MSG = "negative dayCount not allowed";
-	private static Map<Integer, Feiertage_CH> feiertageMap = new HashMap<Integer, Feiertage_CH>();
+	private static Map<Integer, FeiertageCH> feiertageMap = new HashMap<Integer, FeiertageCH>();
 
 	/**
 	 * Wird nicht instanziert.
@@ -409,7 +409,7 @@ public final class FeiertageHelper {
 	/**
 	 * Liste der Feiertagen Schweiz pro Jahr.
 	 */
-	public static List<Feiertag_CH> getFeiertage_CH(int year) {
+	public static List<FeiertagCH> getFeiertage_CH(int year) {
 
 		if (year < 1500 || year > 9999) {
 			throw new IllegalArgumentException("year not between 1500 and 9999");
@@ -423,7 +423,7 @@ public final class FeiertageHelper {
 	 * @param feiertag .
 	 * @return Feiertag_CH oder null.
 	 */
-	public static Feiertag_CH getFeiertag_CH(int year, FeiertagSchweiz feiertag) {
+	public static FeiertagCH getFeiertag_CH(int year, FeiertagSchweiz feiertag) {
 
 		if (year < 1500 || year > 9999) {
 			throw new IllegalArgumentException("year not between 1500 and 9999");
@@ -443,11 +443,11 @@ public final class FeiertageHelper {
 		return calendar.getTime();
 	}
 
-	private static Feiertage_CH getFeiertage(int year) {
+	private static FeiertageCH getFeiertage(int year) {
 
-		Feiertage_CH f = feiertageMap.get(year);
+		FeiertageCH f = feiertageMap.get(year);
 		if (f == null) {
-			feiertageMap.put(year, new Feiertage_CH(year));
+			feiertageMap.put(year, new FeiertageCH(year));
 		}
 		return feiertageMap.get(year);
 	}
