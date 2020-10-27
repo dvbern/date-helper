@@ -20,7 +20,7 @@ import java.util.Date;
 /**
  * Klasse zum Speichern von Kalenderinformationen zu Feiertagen
  */
-public class Feiertag_CH extends Date {
+public class FeiertagCH extends Date {
 
 	private static final long serialVersionUID = -4802375675317099968L;
 
@@ -29,7 +29,7 @@ public class Feiertag_CH extends Date {
 	/**
 	 * Constructor
 	 */
-	Feiertag_CH(FeiertagSchweiz feiertagSchweiz, long timeInMillis) {
+	FeiertagCH(FeiertagSchweiz feiertagSchweiz, long timeInMillis) {
 		super(timeInMillis);
 		this.feiertag = feiertagSchweiz;
 	}
