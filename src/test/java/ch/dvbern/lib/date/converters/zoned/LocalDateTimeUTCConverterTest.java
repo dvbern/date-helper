@@ -18,8 +18,9 @@ import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.ZoneOffset;
 
-import junit.framework.Assert;
 import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
 
 /**
  * Test for {@link LocalDateTimeUTCConverter}
@@ -33,18 +34,18 @@ public class LocalDateTimeUTCConverterTest {
 		LocalDateTimeUTCConverter defaultUTCToLocalDateConverter = new LocalDateTimeUTCConverter();
 		final LocalDateTime unmrashalledDate = defaultUTCToLocalDateConverter.unmarshal("2020-01-14T19:05:53.432Z");
 		assert unmrashalledDate != null;
-		Assert.assertEquals(2020, unmrashalledDate.getYear());
-		Assert.assertEquals(1, unmrashalledDate.getMonthValue());
-		Assert.assertEquals(14, unmrashalledDate.getDayOfMonth());
+		assertEquals(2020, unmrashalledDate.getYear());
+		assertEquals(1, unmrashalledDate.getMonthValue());
+		assertEquals(14, unmrashalledDate.getDayOfMonth());
 		final ZoneOffset offset = ZoneId.systemDefault().getRules().getOffset(LocalDateTime.now());
-		Assert.assertEquals("Wegen dem Zeitzonenunterschied sind wir hier  1 Stunde verschoben ",
+		assertEquals("Wegen dem Zeitzonenunterschied sind wir hier  1 Stunde verschoben ",
 			19 , unmrashalledDate.minusSeconds(offset.getTotalSeconds()).getHour());
-		Assert.assertEquals(5, unmrashalledDate.getMinute());
-		Assert.assertEquals(53, unmrashalledDate.getSecond());
-		Assert.assertEquals(432000000, unmrashalledDate.getNano());
+		assertEquals(5, unmrashalledDate.getMinute());
+		assertEquals(53, unmrashalledDate.getSecond());
+		assertEquals(432000000, unmrashalledDate.getNano());
 
 		final String marshal = defaultUTCToLocalDateConverter.marshal(unmrashalledDate);
-		Assert.assertEquals("2020-01-14T19:05:53.432Z", marshal);
+		assertEquals("2020-01-14T19:05:53.432Z", marshal);
 
 	}
 
@@ -54,19 +55,19 @@ public class LocalDateTimeUTCConverterTest {
 		LocalDateTimeUTCConverter moscowConverter = new LocalDateTimeUTCConverter(moscowZone);
 		final LocalDateTime unmrashalledDate = moscowConverter.unmarshal("2020-01-14T19:05:53.432Z");
 		assert unmrashalledDate != null;
-		Assert.assertEquals(2020, unmrashalledDate.getYear());
-		Assert.assertEquals(1, unmrashalledDate.getMonthValue());
-		Assert.assertEquals(14, unmrashalledDate.getDayOfMonth());
+		assertEquals(2020, unmrashalledDate.getYear());
+		assertEquals(1, unmrashalledDate.getMonthValue());
+		assertEquals(14, unmrashalledDate.getDayOfMonth());
 		final ZoneOffset offset = moscowZone.getRules().getOffset(LocalDateTime.now());
-		Assert.assertEquals("Wegen dem Zeitzonenunterschied sind wir hier zB 3 Stunde verschoben ",
+		assertEquals("Wegen dem Zeitzonenunterschied sind wir hier zB 3 Stunde verschoben ",
 			19 , unmrashalledDate.minusSeconds(offset.getTotalSeconds()).getHour());
-		Assert.assertEquals(22, unmrashalledDate.getHour());  //actual time in moscaw at this instant
-		Assert.assertEquals(5, unmrashalledDate.getMinute());
-		Assert.assertEquals(53, unmrashalledDate.getSecond());
-		Assert.assertEquals(432000000, unmrashalledDate.getNano());
+		assertEquals(22, unmrashalledDate.getHour());  //actual time in moscaw at this instant
+		assertEquals(5, unmrashalledDate.getMinute());
+		assertEquals(53, unmrashalledDate.getSecond());
+		assertEquals(432000000, unmrashalledDate.getNano());
 
 		final String marshal = moscowConverter.marshal(unmrashalledDate);
-		Assert.assertEquals("2020-01-14T19:05:53.432Z", marshal);
+		assertEquals("2020-01-14T19:05:53.432Z", marshal);
 
 	}
 
@@ -76,19 +77,16 @@ public class LocalDateTimeUTCConverterTest {
 		LocalDateTimeUTCConverter laConverter = new LocalDateTimeUTCConverter(losAnglesZone);
 		final LocalDateTime unmrashalledDate = laConverter.unmarshal("2020-01-14T19:05:53.432Z");
 		assert unmrashalledDate != null;
-		Assert.assertEquals(2020, unmrashalledDate.getYear());
-		Assert.assertEquals(1, unmrashalledDate.getMonthValue());
-		Assert.assertEquals(14, unmrashalledDate.getDayOfMonth());
-		final ZoneOffset offset = losAnglesZone.getRules().getOffset(LocalDateTime.now());
-		Assert.assertEquals("Wegen dem Zeitzonenunterschied sind wir hier zB -8 Stunde verschoben ",
-			19 , unmrashalledDate.minusSeconds(offset.getTotalSeconds()).getHour());
-		Assert.assertEquals(11, unmrashalledDate.getHour()); //actual time in la at this instant
-		Assert.assertEquals(5, unmrashalledDate.getMinute());
-		Assert.assertEquals(53, unmrashalledDate.getSecond());
-		Assert.assertEquals(432000000, unmrashalledDate.getNano());
+		assertEquals(2020, unmrashalledDate.getYear());
+		assertEquals(1, unmrashalledDate.getMonthValue());
+		assertEquals(14, unmrashalledDate.getDayOfMonth());
+		assertEquals(11, unmrashalledDate.getHour()); //actual time in la at this instant
+		assertEquals(5, unmrashalledDate.getMinute());
+		assertEquals(53, unmrashalledDate.getSecond());
+		assertEquals(432000000, unmrashalledDate.getNano());
 
 		final String marshal = laConverter.marshal(unmrashalledDate);
-		Assert.assertEquals("2020-01-14T19:05:53.432Z", marshal);
+		assertEquals("2020-01-14T19:05:53.432Z", marshal);
 
 	}
 }
