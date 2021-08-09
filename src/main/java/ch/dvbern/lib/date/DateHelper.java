@@ -132,8 +132,8 @@ public final class DateHelper {
 	}
 
 	/**
-	 * Antwortet ein neues Datum mit dem Datum <code>date<code>
-	 * und der Zeit <code>time<code>.
+	 * Antwortet ein neues Datum mit dem Datum {@code date}
+	 * und der Zeit {@code time}.
 	 *
 	 * @param date Datum von welchem das Datum verwendet wird
 	 * @param time Datum von welchem die Zeit verwendet wird
@@ -154,7 +154,7 @@ public final class DateHelper {
 
 	/**
 	 * Antworted ein Datum
-	 * <code>date<code> welches aus dem String erstellt wurde <code>aDateString><code>
+	 * {@code date} welches aus dem String erstellt wurde {@code aDateString}
 	 *
 	 * @return date Date
 	 */
@@ -166,7 +166,7 @@ public final class DateHelper {
 	}
 
 	/**
-	 * Antwortet den Tag des Datums <code>date<code>.
+	 * Antwortet den Tag des Datums {@code date}.
 	 * Der erste Tag des Monats hat den Wert 1.
 	 *
 	 * @return int Tages Index
@@ -178,7 +178,7 @@ public final class DateHelper {
 	}
 
 	/**
-	 * Antwortet die Kalenderwoche, in welcher das Datum <code>date<code> liegt.
+	 * Antwortet die Kalenderwoche, in welcher das Datum {@code date} liegt.
 	 * Die erste Woche ist die Woche 1
 	 *
 	 * @return int
@@ -191,7 +191,7 @@ public final class DateHelper {
 
 	/**
 	 * Antwortet das Jahr, zu welchem die Kalenderwoche des Datums
-	 * <code>date<code> gehört.
+	 * {@code date} gehört.
 	 * Beispiel: 1.1.2005 hat die Kalenderwoche 53 des Jahres 2004, es wird 2004 zurückgegeben
 	 *
 	 * @return int
@@ -236,7 +236,7 @@ public final class DateHelper {
 	}
 
 	/**
-	 * Antwortet die Stunde des Datums <code>date<code>.
+	 * Antwortet die Stunde des Datums {@code date}.
 	 * Der erste Stunde des Tages hat den Wert 0.
 	 *
 	 * @return int Stunde des Tages
@@ -248,7 +248,7 @@ public final class DateHelper {
 	}
 
 	/**
-	 * Antwortet die Minuten des Datums <code>date<code>.
+	 * Antwortet die Minuten des Datums {@code date}.
 	 * Der erste Minute der Stunde hat den Wert 0.
 	 *
 	 * @return int Minute des Stunde
@@ -260,7 +260,7 @@ public final class DateHelper {
 	}
 
 	/**
-	 * Antwortet den Monat des Datums <code>date<code>.
+	 * Antwortet den Monat des Datums {@code date}.
 	 * Der erste Monat des Jahres hat den Wert 1.
 	 *
 	 * @return int Monats Index
@@ -272,7 +272,7 @@ public final class DateHelper {
 	}
 
 	/**
-	 * Antwortet die Sekunden des Datums <code>date<code>.
+	 * Antwortet die Sekunden des Datums {@code date}.
 	 * Der erste Sekunde der Minute hat den Wert 0.
 	 *
 	 * @return int Sekunde der Minuten
@@ -284,7 +284,7 @@ public final class DateHelper {
 	}
 
 	/**
-	 * Antwortet die Millisekunden des Datums <code>date<code>.
+	 * Antwortet die Millisekunden des Datums {@code date}.
 	 *
 	 * @return int millisekunden der sekunde (0-999)
 	 */
@@ -295,7 +295,7 @@ public final class DateHelper {
 	}
 
 	/**
-	 * Antwortet das Jahr des Datums <code>date<code>.
+	 * Antwortet das Jahr des Datums {@code date}.
 	 *
 	 * @return int Jahreszahl
 	 */
@@ -306,7 +306,7 @@ public final class DateHelper {
 	}
 
 	/**
-	 * Antwortet <code>true</code>, wenn date1 kleiner (älter) oder gleich wie
+	 * Antwortet {@code true}, wenn date1 kleiner (älter) oder gleich wie
 	 * date2 ist.
 	 *
 	 * @return boolean
@@ -317,7 +317,7 @@ public final class DateHelper {
 	}
 
 	/**
-	 * Antwortet <code>true</code>, wenn date1 kleiner (älter) als date2 ist.
+	 * Antwortet {@code true}, wenn date1 kleiner (älter) als date2 ist.
 	 *
 	 * @return boolean
 	 */
@@ -327,7 +327,7 @@ public final class DateHelper {
 	}
 
 	/**
-	 * Antwortet <code>true</code>, wenn date1 grösser (neuer) oder gleich wie
+	 * Antwortet {@code true}, wenn date1 grösser (neuer) oder gleich wie
 	 * date2 ist.
 	 *
 	 * @return boolean
@@ -338,7 +338,7 @@ public final class DateHelper {
 	}
 
 	/**
-	 * Antwortet <code>true</code>, wenn date1 grösser (neuer) als date2 ist.
+	 * Antwortet {@code true}, wenn date1 grösser (neuer) als date2 ist.
 	 *
 	 * @return boolean
 	 */
@@ -348,7 +348,7 @@ public final class DateHelper {
 	}
 
 	/**
-	 * Antwortet <code>true</code>, wenn date1 kleiner (älter) oder gleich wie
+	 * Antwortet {@code true}, wenn date1 kleiner (älter) oder gleich wie
 	 * date2 ist. Die Zeit wird auf 0 gesetzt (beim Vergleich nicht
 	 * berücksichtigt)
 	 */
@@ -382,7 +382,7 @@ public final class DateHelper {
 	}
 
 	/**
-	 * Antwortet <code>true</code>, wenn date1 kleiner (älter) oder gleich wie
+	 * Antwortet {@code true}, wenn date1 kleiner (älter) oder gleich wie
 	 * date2 ist. Die Zeit wird auf 0 gesetzt (beim Vergleich nicht
 	 * berücksichtigt)
 	 *
@@ -394,7 +394,7 @@ public final class DateHelper {
 	}
 
 	/**
-	 * Antwortet <code>true</code>, wenn date1 kleiner (älter) als date2 ist.
+	 * Antwortet {@code true}, wenn date1 kleiner (älter) als date2 ist.
 	 * Die Zeit wird auf 0 gesetzt (beim Vergleich nicht berücksichtigt)
 	 *
 	 * @return boolean
@@ -405,7 +405,7 @@ public final class DateHelper {
 	}
 
 	/**
-	 * Antwortet <code>true</code>, wenn date1 grösser (neuer) oder gleich wie
+	 * Antwortet {@code true}, wenn date1 grösser (neuer) oder gleich wie
 	 * date2 ist. Die Zeit wird auf 0 gesetzt (beim Vergleich nicht
 	 * berücksichtigt)
 	 *
@@ -417,7 +417,7 @@ public final class DateHelper {
 	}
 
 	/**
-	 * Antwortet <code>true</code>, wenn date1 grösser (neuer) als date2 ist.
+	 * Antwortet {@code true}, wenn date1 grösser (neuer) als date2 ist.
 	 * Die Zeit wird auf 0 gesetzt (beim Vergleich nicht berücksichtigt)
 	 *
 	 * @return boolean
@@ -488,12 +488,12 @@ public final class DateHelper {
 	}
 
 	/**
-	 * Prüft, ob <code>date</code> im Zeitbereich von <code>dateFrom</code> und
-	 * <code>dateTo</code> liegt. In diesem Fall wird <code>true</code>
-	 * geantwortet, sonst <code>false</code>.
+	 * Prüft, ob {@code date} im Zeitbereich von <code>dateFrom</code> und
+	 * {@code dateTo} liegt. In diesem Fall wird <code>true</code>
+	 * geantwortet, sonst {@code false}.
 	 * <p>
 	 * Einfacher ausgedrückt:
-	 * <code>return (dateFrom &lt;= date) & (dateTo &gt;= date)</code>
+	 * {@code return (dateFrom <= date) & (dateTo >= date)}
 	 * <p>
 	 *
 	 * @param date java.util.Date
@@ -521,13 +521,13 @@ public final class DateHelper {
 	}
 
 	/**
-	 * Prüft, ob <code>date</code> im Datumbsbereich von <code>dateFrom</code>
-	 * und <code>dateTo</code> liegt. In diesem Fall wird <code>true</code>
-	 * geantwortet, sonst <code>false</code>. Die Zeit wird auf 0 gesetzt (beim
+	 * Prüft, ob {@code date} im Datumbsbereich von <code>dateFrom</code>
+	 * und {@code dateTo} liegt. In diesem Fall wird <code>true</code>
+	 * geantwortet, sonst {@code false}. Die Zeit wird auf 0 gesetzt (beim
 	 * Vergleich nicht beruechsichtigt)
 	 * <p>
 	 * Einfacher ausgedrückt:
-	 * <code>return (dateFrom &lt;= date) & (dateTo &gt;= date)</code>
+	 * {@code return (dateFrom <= date) & (dateTo >= date)}
 	 * <p>
 	 *
 	 * @param date java.util.Date
@@ -572,7 +572,7 @@ public final class DateHelper {
 
 	/**
 	 * Antwortet das Datum des ersten Tags der Woche (Montag), in der
-	 * <code>date</code> liegt
+	 * {@code date} liegt
 	 *
 	 * @return Date
 	 */
@@ -585,7 +585,7 @@ public final class DateHelper {
 
 	/**
 	 * Antwortet das Datum des letzten Tags der Woche (Sonntag), in der
-	 * <code>date</code> liegt
+	 * {@code date} liegt
 	 *
 	 * @return Date
 	 */
@@ -597,7 +597,7 @@ public final class DateHelper {
 	}
 
 	/**
-	 * Antwortet das Datum des ersten Tags des Monats, in der <code>date</code>
+	 * Antwortet das Datum des ersten Tags des Monats, in der {@code date}
 	 * liegt
 	 *
 	 * @return Date
@@ -611,7 +611,7 @@ public final class DateHelper {
 	}
 
 	/**
-	 * Antwortet das Datum des letzten Tags des Monats, in der <code>date</code>
+	 * Antwortet das Datum des letzten Tags des Monats, in der {@code date}
 	 * liegt
 	 *
 	 * @return Date
@@ -658,11 +658,11 @@ public final class DateHelper {
 	}
 
 	/**
-	 * Gibt <code>true</code> zurück wenn das Jahr des gegebenen Datums ein
-	 * Schaltjahr ist, sonst <code>false</code>.
+	 * Gibt {@code true} zurück wenn das Jahr des gegebenen Datums ein
+	 * Schaltjahr ist, sonst {@code false}.
 	 *
 	 * @param d Datm zum Prüfen ob Schaltjahr
-	 * @return <code>true</code> wenn Schaltjahr, <code>false</code> sonst.
+	 * @return {@code true} wenn Schaltjahr, <code>false</code> sonst.
 	 */
 	public static boolean isSchaltjahr(Date d) {
 

@@ -94,15 +94,15 @@ public class Zeitraum implements Comparable<Zeitraum>, Serializable {
 	}
 
 	/**
-	 * Spaltet den {@link Zeitraum} in mehrere Unter-Zeiträume auf, welche je einen(ganzen oder angebrochenen) Monat
+	 * Spaltet den Zeitraum in mehrere Unter-Zeiträume auf, welche je einen (ganzen oder angebrochenen) Monat
 	 * beinhalten.
-	 * <p/>
+	 * <p>
 	 * Für Zeiträume welche genau einem Monat entsprechen oder unter einem Monat sind wird eine leere Liste zurückgegeben.
 	 *
 	 * @return ein Array mit dem aufgesplitteten Zeitraum. Leere Liste wenn der Zeitraum kleiner oder gleich einem Monat ist.
 	 */
 	public Collection<Zeitraum> splitByMonth() {
-		List<Date> ersteDesMonats = new ArrayList<Date>();
+		List<Date> ersteDesMonats = new ArrayList<>();
 		Calendar cal = Calendar.getInstance();
 		cal.setTime(von);
 		cal.add(Calendar.MONTH, 1);
@@ -115,18 +115,21 @@ public class Zeitraum implements Comparable<Zeitraum>, Serializable {
 	}
 
 	/**
-	 * Spaltet den {@link Zeitraum} in mehrere Unter-Zeiträume auf, je nach übergebenen splitStartDates. Für jedes Datum
+	 * Spaltet den Zeitraum in mehrere Unter-Zeiträume auf, je nach übergebenen splitStartDates. Für jedes Datum
 	 * in splitStartDate wird wie folgt vorgegangen:
-	 * <p>
+	 * <ul>
 	 * <li>wenn das aktuell betrachtete Datum nicht innerhalb des Zeitraumes ist, wird es nicht verwendet.
 	 * <li>wenn das aktuell betrachtete Datum innerhalb des Zeitraumes ist, wird der Zeitraum aufgesplittet in 2
 	 * Zeiträume: 1.Zeitraum von Beginn ursprünglichem Zeitraum bis (aktuellesDatum -1 Tag), 2. Zeitraum aktueller Tag
 	 * bis Ende ursprünglicher Zeitraum.
-	 * <p>
+	 * </ul>
+	 *
 	 * Beispiel: Gegeben:
+	 * <ul>
 	 * <li>Zeitraum z vom 1.1.2008 bis 31.3.2008.
 	 * <li>Date d1 mit Wert "15.2.2008"
 	 * <li>Date d2 mit Wert "27.3.2008"
+	 * </ul>
 	 *
 	 * z.split(d1, d2) reultiert in 3 Zeiträume: 1.1.2008 -14.2.2008, 15.2.2008 - 26.3.2008, 27.3.2008 - 31.3.2008
 	 */
@@ -135,28 +138,31 @@ public class Zeitraum implements Comparable<Zeitraum>, Serializable {
 	}
 
 	/**
-	 * Spaltet den {@link Zeitraum} in mehrere Unter-Zeiträume auf, je nach übergebenen splitStartDates. Für jedes Datum
+	 * Spaltet den Zeitraum in mehrere Unter-Zeiträume auf, je nach übergebenen splitStartDates. Für jedes Datum
 	 * in splitStartDate wird wie folgt vorgegangen:
-	 * <p>
+	 * <ul>
 	 * <li>wenn das aktuell betrachtete Datum nicht innerhalb des Zeitraumes ist, wird es nicht verwendet.
 	 * <li>wenn das aktuell betrachtete Datum innerhalb des Zeitraumes ist, wird der Zeitraum aufgesplittet in 2
 	 * Zeiträume: 1.Zeitraum von Beginn ursprünglichem Zeitraum bis (aktuellesDatum -1 Tag), 2. Zeitraum aktueller Tag
 	 * bis Ende ursprünglicher Zeitraum.
-	 * <p>
+	 * </ul>
+	 *
 	 * Beispiel: Gegeben:
+	 * <ul>
 	 * <li>Zeitraum z vom 1.1.2008 bis 31.3.2008.
 	 * <li>Date d1 mit Wert "15.2.2008"
 	 * <li>Date d2 mit Wert "27.3.2008"
+	 * </ul>
 	 *
 	 * z.split(d1, d2) reultiert in 3 Zeiträume: 1.1.2008 -14.2.2008, 15.2.2008 - 26.3.2008, 27.3.2008 - 31.3.2008
 	 *
-	 * @param ignoreBoundaryDates Wenn <code>false</code> werden auch Unterzeiträume für Daten erstellt die gleich dem
+	 * @param ignoreBoundaryDates Wenn {@code false} werden auch Unterzeiträume für Daten erstellt die gleich dem
 	 * Start oder Ende des aktuellen Zeitraumes sind
 	 */
 	protected Collection<Zeitraum> split(boolean ignoreBoundaryDates, Date... splitStartDates) {
 		List<Date> splitStartDatesList = Arrays.asList(splitStartDates);
 		Collections.sort(splitStartDatesList);
-		List<Zeitraum> retVal = new ArrayList<Zeitraum>();
+		List<Zeitraum> retVal = new ArrayList<>();
 		Date startDate = this.von;
 		for (Date splitStartDate : splitStartDatesList) {
 			if (!contains(splitStartDate) || (ignoreBoundaryDates && (splitStartDate.equals(von) || splitStartDate.equals(bis)))) {
@@ -198,7 +204,7 @@ public class Zeitraum implements Comparable<Zeitraum>, Serializable {
 	}
 
 	/**
-	 * Gibt <code>true</code> zurück wenn mindestens 1 Tag des gegebenen Zeitraumes mit diesem Zeitraum überschneidet.
+	 * Gibt {@code true} zurück wenn mindestens 1 Tag des gegebenen Zeitraumes mit diesem Zeitraum überschneidet.
 	 */
 	public boolean intersects(Zeitraum other) {
 
@@ -207,7 +213,7 @@ public class Zeitraum implements Comparable<Zeitraum>, Serializable {
 	}
 
 	/**
-	 * Gibt an, ob das gegebene Datum innerhalb des Zeitraumes ist, d.h. date >= datumVon && date <= datumBis
+	 * Gibt an, ob das gegebene Datum innerhalb des Zeitraumes ist, d.h. {@code date >= datumVon && date <= datumBis}
 	 */
 	public boolean contains(Date date) {
 
@@ -218,13 +224,14 @@ public class Zeitraum implements Comparable<Zeitraum>, Serializable {
 	 * Entfernt alle gegebenen (Unter-)Zeiträume aus diesem Zeitraum.
 	 * <p>
 	 * Beispiel:
-	 * <p>
-	 * <code><pre>
+	 * <pre>
+	 * {@code
 	 * Zeitraum z1; //z1 ist vom 1.1.2009 bis 31.1.2009
 	 * Zeitraum februar2009; // 1.2.2009 bis 28.2.2009
 	 * Zeitraum drittesQuartal2009; // 1.7.2009 bis 30.9.2009
-	 * List&lt;Zeitraum&gt; subtracted = z1.subtract(februar2009, drittesQuartal2009);
-	 * </pre></code> Zeitraum Im obigen Beispiel beinhaltet die Liste subtracted 3 Zeiträume: 1.1.2009 - 31.12.2009,
+	 * List<Zeitraum> subtracted = z1.subtract(februar2009, drittesQuartal2009);
+	 * }</pre>
+	 * Zeitraum Im obigen Beispiel beinhaltet die Liste subtracted 3 Zeiträume: 1.1.2009 - 31.12.2009,
 	 * 1.3.2009 - 30.6.2009 und 1.10.2009 - 31.12.2009.
 	 *
 	 * @return eine Liste von übriggebliebenen Zeiträumen.
@@ -232,7 +239,7 @@ public class Zeitraum implements Comparable<Zeitraum>, Serializable {
 	public List<Zeitraum> subtract(Zeitraum... unterzeitraeume) {
 
 		Arrays.sort(unterzeitraeume);
-		List<Zeitraum> retVal = new ArrayList<Zeitraum>();
+		List<Zeitraum> retVal = new ArrayList<>();
 		Zeitraum left = this;
 
 		for (Zeitraum uz : unterzeitraeume) {
@@ -240,7 +247,7 @@ public class Zeitraum implements Comparable<Zeitraum>, Serializable {
 				continue;
 			}
 			if (uz.getVon().before(left.getVon()) && uz.getBis().after(left.getBis())) {
-				return new ArrayList<Zeitraum>();
+				return new ArrayList<>();
 			}
 			List<Zeitraum> splitted = (List<Zeitraum>) left.split(true, uz.getVon(), uz.getBis());
 
@@ -248,7 +255,7 @@ public class Zeitraum implements Comparable<Zeitraum>, Serializable {
 				if (!splitted.isEmpty()) {
 					Zeitraum lastSplitted = splitted.get(splitted.size() - 1);
 					left = new Zeitraum(DateHelper.addDays(lastSplitted.getVon(), 1), lastSplitted.getBis());
-				} else if (splitted.isEmpty()) {
+				} else {
 					return retVal;
 				}
 			} else if (!uz.getBis().before(left.getBis())) {
@@ -285,7 +292,7 @@ public class Zeitraum implements Comparable<Zeitraum>, Serializable {
 	 * positiv.</li>
 	 * </ul>
 	 *
-	 * @param date das zu vergleichende Datum, darf nicht <code>null</code> sein.
+	 * @param date das zu vergleichende Datum, darf nicht {@code null} sein.
 	 * @return die Differenz in Milisekunden zum Beginn oder zum Ende des Zeitraumes, oder 0 wenn <tt>date</tt> in diesem
 	 * Zeitaum enthalten ist.
 	 */
@@ -320,9 +327,6 @@ public class Zeitraum implements Comparable<Zeitraum>, Serializable {
 		return MessageFormat.format("{0} - {1}", fromDateFormat.format(von), toDateFormat.format(bis));
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
 	@Override
 	public int hashCode() {
 
@@ -333,9 +337,6 @@ public class Zeitraum implements Comparable<Zeitraum>, Serializable {
 		return result;
 	}
 
-	/**
-	 * {@inheritDoc}
-	 */
 	@Override
 	public boolean equals(Object obj) {
 

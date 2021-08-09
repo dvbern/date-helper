@@ -19,7 +19,7 @@
     <parent>
         <groupId>ch.dvbern.oss.maven</groupId>
         <artifactId>parent</artifactId>
-        <version>2.0.0</version>
+        <version>3.0.5</version>
     </parent>
 
     <groupId>ch.dvbern.oss.datehelper</groupId>
@@ -31,6 +31,10 @@
     <description>Helperclasses for date operations and conversions as well as calculation of holidays</description>
     <url>http://github.com/dvbern/date-helper</url>
 
+     <properties>
+        <spotbugs-maven-plugin.version>4.2.3</spotbugs-maven-plugin.version>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>junit</groupId>
@@ -40,9 +44,10 @@
         </dependency>
         <!--Fuer nullable annotation-->
         <dependency>
-            <groupId>com.google.code.findbugs</groupId>
-            <artifactId>annotations</artifactId>
-            <version>2.0.3</version>
+            <groupId>com.github.spotbugs</groupId>
+            <artifactId>spotbugs-annotations</artifactId>
+            <version>${spotbugs-maven-plugin.version}</version>
+            <optional>true</optional>
         </dependency>
     </dependencies>
 
@@ -53,19 +58,17 @@
 
     <developers>
         <developer>
-            <id>pech</id>
-            <name>Christophe Perret</name>
-            <email>christophe.perret@dvbern.ch</email>
-            <roles>
-                <role>Entwickler</role>
-            </roles>
+            <name>DV Bern AG developers</name>
+            <email>hallo@dvbern.ch</email>
+            <organization>DV Bern AG</organization>
+            <organizationUrl>https://www.dvbern.ch</organizationUrl>
         </developer>
     </developers>
 
     <scm>
         <connection>scm:git:git://github.com/dvbern/date-helper.git</connection>
         <developerConnection>scm:git:ssh://github.com:dvbern/date-helper.git</developerConnection>
-        <url>http://github.com/dvbern/date-helper/tree/master</url>
+        <url>https://github.com/dvbern/date-helper</url>
     </scm>
 
     <build>
