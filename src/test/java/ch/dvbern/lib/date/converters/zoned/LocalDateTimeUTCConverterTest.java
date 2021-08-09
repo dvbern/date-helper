@@ -37,7 +37,7 @@ public class LocalDateTimeUTCConverterTest {
 		assertEquals(2020, unmrashalledDate.getYear());
 		assertEquals(1, unmrashalledDate.getMonthValue());
 		assertEquals(14, unmrashalledDate.getDayOfMonth());
-		final ZoneOffset offset = ZoneId.systemDefault().getRules().getOffset(LocalDateTime.now());
+		final ZoneOffset offset = ZoneId.of("Europe/London").getRules().getOffset(LocalDateTime.now());
 		assertEquals("Wegen dem Zeitzonenunterschied sind wir hier  1 Stunde verschoben ",
 			19 , unmrashalledDate.minusSeconds(offset.getTotalSeconds()).getHour());
 		assertEquals(5, unmrashalledDate.getMinute());
